@@ -1,0 +1,7 @@
+{
+  "name": "cnb",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
