@@ -8,6 +8,8 @@
 *.tmp.*
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
+.env
+.env.*
 
 *.log
 log.txt
@@ -60,7 +62,6 @@ yarn-error.log
 /.nx
 /.nx/cache
 /connect.lock
-/coverage
 /libpeerconnection.log
 testem.log
 /typings
