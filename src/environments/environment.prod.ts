@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: `https://cnb.fly.dev/`,
+  apiUrl: `https://cnb.fly.dev`,
 };
