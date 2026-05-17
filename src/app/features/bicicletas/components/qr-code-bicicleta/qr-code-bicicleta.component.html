@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Bicicleta</ion-title></ion-toolbar
+  >
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-icon name="checkmark"> </ion-icon>
+    <div class="texto-container">
+      <h3>Parabéns, sua bicicleta foi autenticada com sucesso!</h3>
+      <span
+        >Agora você pode baixar o seu qr code e utilizar na sua bicicleta.</span
+      >
+    </div>
+    <img [src]="'data:image/png;base64,' + qrcode" alt="" />
+    <div class="button-container">
+      <ion-button>Download Qr-code</ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="container">
+    <div class="container-detalhe">
+      <ion-button (click)="abrirPopOver($event)">
+        <ion-icon name="ellipsis-vertical" slot="end"></ion-icon>
+      </ion-button>
+
+      <ion-item-divider>
+        <small> Bicicleta </small>
+      </ion-item-divider>
+
+      <app-bicicleta-detalhe [bicicleta]="bicicleta"></app-bicicleta-detalhe>
+    </div>
+
+    <div class="container-acoes">
+      <ion-item-divider>
+        <small> Ações rápidas </small>
+      </ion-item-divider>
+      <app-acoes-rapidas *ngIf="bicicleta" [bicicleta]="bicicleta">
+      </app-acoes-rapidas>
+    </div>
+
+    <div class="container-transacao">
+      <ion-item-divider>
+        <small> Histórico </small>
+      </ion-item-divider>
+      <app-transacao
+        *ngFor="let transacao of bicicleta?.transacoes"
+        [transacao]="transacao"
+      ></app-transacao>
+    </div>
+  </div>
+</ion-content>

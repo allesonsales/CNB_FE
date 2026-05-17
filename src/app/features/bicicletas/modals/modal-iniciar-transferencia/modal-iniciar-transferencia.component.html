@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Transferir Bicicleta</ion-title></ion-toolbar
+  >
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <app-background></app-background> -->
+  <form [formGroup]="formTransacao">
+    <ion-item-divider>
+      <ion-label>Dados do comprador</ion-label>
+    </ion-item-divider>
+    <div class="item-container">
+      <ion-item class="input-container" lines="none">
+        <ion-label position="stacked">CPF</ion-label>
+        <input
+          type="text"
+          formControlName="cpf"
+          mask="000.000.000-00"
+          placeholder="O comprador precisa estar cadastrado no CNB."
+        />
+      </ion-item>
+    </div>
+
+    <div class="container-bicicleta" *ngIf="comprador">
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            type="text"
+            formControlName="nome"
+            label="Nome"
+            labelPlacement="stacked"
+            readonly="true"
+            class="input"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <ion-item-divider>
+        <ion-label>Dados da bicicleta</ion-label>
+      </ion-item-divider>
+      <div class="inputs-container">
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              type="text"
+              formControlName="marca"
+              label="Marca"
+              labelPlacement="stacked"
+              readonly="true"
+              class="input"
+            ></ion-input>
+          </ion-item>
+        </div>
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              type="text"
+              formControlName="cor"
+              label="Cor"
+              labelPlacement="stacked"
+              readonly="true"
+              class="input"
+            ></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="inputs-container">
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              type="text"
+              formControlName="aro"
+              label="Aro"
+              labelPlacement="stacked"
+              readonly="true"
+              class="input"
+            ></ion-input>
+          </ion-item>
+        </div>
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              type="text"
+              formControlName="numeroSerie"
+              label="Numero de Serie"
+              labelPlacement="stacked"
+              readonly="true"
+              class="input"
+            ></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            type="number"
+            formControlName="valor"
+            label="Valor"
+            labelPlacement="stacked"
+            class="input"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <div class="botao-container-modal">
+        <ion-button class="cancelar" (click)="cancelar()">
+          <ion-label>Cancelar</ion-label>
+        </ion-button>
+        <ion-button (click)="transferir()">
+          <ion-label>Confirmar transferência</ion-label>
+        </ion-button>
+      </div>
+    </div>
+  </form>
+</ion-content>

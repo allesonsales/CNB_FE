@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-item-divider>
+    <small>Minhas bicicletas</small>
+  </ion-item-divider>
+  <div class="container">
+    <ion-list *ngIf="bicicletas().length > 0; else vazio">
+      <ion-item
+        *ngFor="let bicicleta of bicicletaService.bicicletas()"
+        lines="none"
+      >
+        <app-bicicleta
+          [bicicletaLista]="bicicleta"
+          (clik)="abrirPopOver($event, bicicleta)"
+        ></app-bicicleta>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #vazio>
+      <div class="vazio">
+        <p>Nenhuma bicicleta adicionada.</p>
+        <app-botao-adicionar
+          [routerLink]="['/adicionar-bicicleta']"
+        ></app-botao-adicionar>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

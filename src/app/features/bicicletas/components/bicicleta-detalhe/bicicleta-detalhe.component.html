@@ -1,0 +1,22 @@
+<div class="container">
+  <ion-item-group>
+    <ion-item lines="none">
+      <ion-label>Marca:</ion-label>
+      <ion-note>{{ bicicleta?.marca }}</ion-note>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Aro:</ion-label>
+      <ion-note slot="end">{{ bicicleta?.aro }}</ion-note>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Cor:</ion-label>
+      <ion-note slot="end">{{ bicicleta?.cor }}</ion-note>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Numero série:</ion-label>
+      <ion-note slot="end" class="numero">{{
+        bicicleta?.numeroSerie
+      }}</ion-note>
+    </ion-item>
+  </ion-item-group>
+</div>

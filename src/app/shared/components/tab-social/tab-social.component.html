@@ -1,0 +1,7 @@
+<ion-segment>
+  @for (segmento of segmentos; track segmento.content) {
+    <ion-segment-button [value]="segmento.content">
+      <ion-icon [name]="segmento.icon"></ion-icon>
+    </ion-segment-button>
+  }
+</ion-segment>

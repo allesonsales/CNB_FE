@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="pesquisa">
+      <ion-searchbar
+        placeholder="Pesquisar..."
+        (ionInput)="pesquisar($event)"
+      ></ion-searchbar>
+      <ion-button (click)="fechar()">
+        <ion-icon name="close"></ion-icon
+      ></ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    @for (item of listaPesquisa; track item.id) {
+      <ion-item (click)="irPara(item.id)">
+        <div class="item-container">
+          <ion-avatar> <img src="https://i.pravatar.cc/150" /> </ion-avatar>
+          <ion-label>{{ item.nome }}</ion-label>
+        </div>
+      </ion-item>
+    }
+  </div>
+</ion-content>
+
+@if (carregando) {
+  <ion-spinner></ion-spinner>
+}

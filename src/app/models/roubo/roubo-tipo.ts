@@ -1,0 +1,5 @@
+export enum RouboTipo {
+  ASSALTO = 'ASSALTO',
+  ASSALTO_MAO_ARMADA = 'ASSALTO_MAO_ARMADA',
+  FURTO = 'FURTO',
+}

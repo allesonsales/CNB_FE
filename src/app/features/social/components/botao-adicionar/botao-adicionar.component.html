@@ -1,0 +1,23 @@
+<ion-fab slot="fixed" horizontal="center" vertical="bottom">
+  <ion-fab-button id="fab-menu">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-popover trigger="fab-menu" triggerAction="click">
+  <ng-template>
+    <ion-list>
+      <ion-item button (click)="irPara('adicionar-bicicleta')">
+        <ion-icon name="bicycle" slot="start"></ion-icon>
+        <ion-label>Adicionar bicicleta</ion-label>
+      </ion-item>
+      <ion-item button>
+        <ion-icon name="duplicate" slot="start"></ion-icon>
+        <ion-label>Adicionar post</ion-label>
+      </ion-item>
+      <ion-item button (click)="irPara('nova-atividade')">
+        <ion-icon name="pulse" slot="start"></ion-icon>
+        <ion-label>Adicionar atividade</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+</ion-popover>

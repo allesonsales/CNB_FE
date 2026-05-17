@@ -1,0 +1,10 @@
+ion-segment {
+  min-height: 40px;
+}
+
+ion-segment-button {
+  --background-focused: red;
+  --color: #7b7b7b;
+  --color-checked: var(--azul-primario);
+  --background-hover: red;
+}

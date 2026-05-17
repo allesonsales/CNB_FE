@@ -1,0 +1,58 @@
+<ion-item
+  lines="none"
+  [ngClass]="{
+    roubo: notificacao.tipo === NotificacaoTipo.ROUBO,
+  }"
+>
+  <div
+    class="notificacao-container"
+    [ngClass]="{
+      roubo: notificacao.tipo === NotificacaoTipo.ROUBO,
+    }"
+  >
+    <div class="notificacao-left">
+      <div class="notificacao-avatar">
+        <ion-avatar
+          *ngIf="
+            notificacao.tipo === NotificacaoTipo.SOCIAL ||
+            notificacao.tipo.includes('TRANSACAO')
+          "
+        >
+          <img [src]="notificacao.remetente.foto" />
+        </ion-avatar>
+
+        <ion-icon [name]="getIcon(notificacao.tipo)"></ion-icon>
+      </div>
+
+      <div class="notificacao-texto-container">
+        <h3>
+          {{ notificacao.remetente.nome }}
+        </h3>
+
+        <p>
+          {{ notificacao.mensagem }}
+        </p>
+      </div>
+    </div>
+
+    <div class="notificacao-right-container">
+      <div
+        class="acao-container"
+        *ngIf="notificacao.tipo.includes('TRANSACAO')"
+      >
+        <app-botoes-acao-notificacao
+          [tipoNotificacao]="notificacao.tipo"
+          (acao)="onAcaoNotificacao($event, notificacao)"
+        ></app-botoes-acao-notificacao>
+      </div>
+
+      <ion-avatar *ngIf="notificacao.thumbnail">
+        <img src="{{ notificacao.thumbnail }}" />
+      </ion-avatar>
+    </div>
+
+    <small class="data">
+      {{ notificacao.dataCriacao | date: "dd/MM/yyyy" }}
+    </small>
+  </div>
+</ion-item>

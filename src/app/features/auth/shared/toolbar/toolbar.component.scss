@@ -1,0 +1,14 @@
+ion-button {
+  --background: transparent;
+}
+
+ion-toolbar {
+  --background: var(--azul-primario);
+  border-radius: 0 0 15px 15px;
+  padding: 0.2rem;
+  text-align: center;
+  h3 {
+    margin-left: -2rem;
+    color: #fff;
+  }
+}

@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-item-divider>
+      <small>Adicionar bicicleta</small>
+    </ion-item-divider>
+    <form [formGroup]="formBicicleta">
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            class="input"
+            type="text"
+            label="Número de série"
+            formControlName="numeroSerie"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Digite o número de série da bicicleta"
+            maxlength="20"
+          ></ion-input>
+        </ion-item>
+        <ion-text *ngIf="numeroSerie && numeroSerie.invalid">
+          <small *ngIf="numeroSerie.touched && numeroSerie.errors?.['required']"
+            >O número de série é obrigatório.</small
+          >
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-select label="Marca" formControlName="marca">
+            <ion-select-option
+              *ngFor="let marca of marcasBicicleta"
+              [value]="marca"
+            >
+              {{ labelsMarca[marca] }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text *ngIf="marca?.invalid">
+          <small *ngIf="marca?.touched && marca?.errors?.['required']"
+            >A marca da bicicleta é obrigatória.</small
+          >
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-select label="Aro" formControlName="aro">
+            <ion-select-option *ngFor="let aro of arosBicicleta" [value]="aro">
+              {{ aro }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text *ngIf="aro?.invalid">
+          <small *ngIf="aro?.touched && aro?.errors?.['required']"
+            >O aro da bicicleta é obrigatório.</small
+          >
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-select label="Cor" formControlName="cor">
+            <ion-select-option *ngFor="let cor of coresBicicleta" [value]="cor">
+              {{ labelsCor[cor] }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-select label="Categoria" formControlName="categoria">
+            <ion-select-option
+              *ngFor="let categoria of categoriasBicicleta"
+              [value]="categoria"
+            >
+              {{ labelsCategoria[categoria] }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text *ngIf="categoria?.invalid">
+          <small *ngIf="categoria?.touched && categoria?.errors?.['required']"
+            >A categoria da bicicleta é obrigatória.</small
+          >
+        </ion-text>
+      </div>
+      <div class="button-container">
+        <ion-button (click)="adicionarBicicleta()">Adicionar</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

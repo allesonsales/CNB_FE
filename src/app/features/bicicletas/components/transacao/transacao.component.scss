@@ -1,0 +1,46 @@
+ion-item {
+  position: relative;
+  --min-height: 110px;
+  color: var(--texto-azul);
+  --border-radius: 25px;
+  --background: #fff;
+  margin: 0.5rem 0;
+}
+
+small {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 0.8rem;
+}
+
+.transacao-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+ion-avatar {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+}
+
+ion-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.transacao-texto-container {
+  display: flex;
+  max-width: 100%;
+}
+
+ion-icon {
+  color: var(--laranja-primario);
+  font-size: 2rem;
+  min-width: 50px;
+}

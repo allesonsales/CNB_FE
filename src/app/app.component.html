@@ -1,3 +1,38 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <app-flash-message></app-flash-message>
+  <ion-menu menuId="first-menu" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <ion-menu-toggle>
+        <div class="menu-container">
+          <div class="menu-item">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Minhas conquistas</span>
+          </div>
+          <div class="menu-item">
+            <ion-icon name="people-outline"></ion-icon>
+            <span>Criar grupo</span>
+          </div>
+          <div class="menu-item" (click)="irPara('politica-privacidade')">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Politica de privacidade</span>
+          </div>
+          <div class="menu-item">
+            <ion-icon name="cog-outline"></ion-icon>
+            <span>Configurações</span>
+          </div>
+          <div class="menu-item" (click)="logout()">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Sair</span>
+          </div>
+        </div>
+      </ion-menu-toggle>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

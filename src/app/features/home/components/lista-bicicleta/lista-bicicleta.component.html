@@ -1,0 +1,17 @@
+<ion-item-group>
+  <div class="lista-horizontal">
+    <div class="item" *ngFor="let bicicleta of bicicletas">
+      <ion-avatar>
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+
+      <div
+        class="marca-container"
+        [routerLink]="['/bicicleta', bicicleta.numeroSerie]"
+      >
+        <ion-label>{{ bicicleta.marca }}</ion-label>
+        <small>{{ bicicleta.cor }}</small>
+      </div>
+    </div>
+  </div>
+</ion-item-group>

@@ -1,0 +1,20 @@
+.titulo-accordion {
+  color: var(--azul-primario);
+  padding: 1rem;
+}
+
+.politica-container {
+  padding: 1rem;
+  color: var(--texto-azul);
+}
+
+.politica-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,42 @@
+<ion-item>
+  <small *ngIf="!transacao.dataFim">{{
+    transacao.dataInicio | date: "dd/MM/yyyy"
+  }}</small>
+  <small *ngIf="transacao.dataFim">{{
+    transacao.dataFim | date: "dd/MM/yyyy"
+  }}</small>
+  <div class="transacao-container">
+    <ion-avatar [routerLink]="['/usuario', transacao.comprador.nome]">
+      <img src="https://i.pravatar.cc/150" />
+    </ion-avatar>
+    <div class="transacao-texto-container">
+      <span *ngIf="transacao.status != transacaoStatus.CONCLUIDA"
+        >Transferência pendente para <b>{{ transacao.comprador.nome }}</b>
+      </span>
+
+      <span
+        *ngIf="
+          transacao.status == transacaoStatus.CONCLUIDA &&
+          transacao.comprador.id != usuarioLogado.id
+        "
+      >
+        <b>{{ transacao.vendedor.nome.split(" ")[0] }} </b>
+        Transferiu a bicicleta para
+        <b>{{ transacao.comprador.nome.split(" ")[0] }}</b>
+      </span>
+
+      <span *ngIf="transacao.comprador.id == usuarioLogado.id"
+        >Você comprou a bicicleta de
+        <b>{{ transacao.vendedor.nome.split(" ")[0] }}</b>
+      </span>
+    </div>
+    <ion-icon
+      slot="end"
+      [name]="
+        transacao.status == transacaoStatus.CONCLUIDA
+          ? 'check-mark'
+          : 'arrow-back'
+      "
+    ></ion-icon>
+  </div>
+</ion-item>

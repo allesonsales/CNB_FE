@@ -1,0 +1,54 @@
+<ion-list>
+  <ion-card>
+    <ion-card-header>
+      <div class="post-header">
+        <div class="post-header-left">
+          <ion-avatar>
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <div class="post-header-title">
+            <ion-card-title>Alleson Sales</ion-card-title>
+            <ion-card-subtitle>Cotia</ion-card-subtitle>
+          </div>
+        </div>
+        <ion-button fill="clear" (click)="abrirMenu($event)">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+        <ion-popover
+          [isOpen]="menuAberto"
+          [event]="evento"
+          (didDismiss)="menuAberto = false"
+        >
+          <ng-template>
+            <ion-content class="ion-padding">
+              <div class="list-container">
+                <ion-item>Denúnciar</ion-item>
+              </div>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </div>
+    </ion-card-header>
+
+    <div class="post-content">
+      <div class="post-content-media">
+        <img src="https://docs-demo.ionic.io/assets/madison.jpg" alt="" />
+      </div>
+      <div class="post-content-like">
+        <ion-button fill="clear">
+          <ion-icon name="heart"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear">
+          <ion-icon name="chatbubble"></ion-icon>
+        </ion-button>
+        <small>Curtido por Alleson, Babi..</small>
+      </div>
+      <div class="post-content-text">
+        <span>
+          Here's a small text description for the card content. Nothing more,
+          nothing less.
+        </span>
+      </div>
+    </div>
+  </ion-card>
+</ion-list>

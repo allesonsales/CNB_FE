@@ -1,0 +1,39 @@
+ion-item-group {
+  margin-bottom: 1rem;
+}
+
+.lista-horizontal {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  overflow-x: auto;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
+  color: var(--azul-primario);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  ion-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.marca-container {
+  display: flex;
+  flex-direction: column;
+}

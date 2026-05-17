@@ -1,0 +1,53 @@
+<main>
+  <section class="roubada">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+    <h2>Bicicleta roubada!</h2>
+    <small>Esta bicicleta possui um registro de roubo ativo.</small>
+  </section>
+  <div class="section-container">
+    <section class="bicicleta">
+      <h4>Informações da bicicleta</h4>
+      <div class="dados">
+        <span><b>Status:</b> {{ bicicleta?.status }}</span>
+        <span *ngIf="bicicleta"
+          ><b>Categoria:</b> {{ labelCategoria[bicicleta.categoria] }}</span
+        >
+        <span><b>Tamanho:</b> {{ bicicleta?.aro }}</span>
+        <span *ngIf="bicicleta"
+          ><b>Marca:</b> {{ labelMarca[bicicleta.marca] }}</span
+        >
+        <span *ngIf="bicicleta"><b>Cor:</b> {{ labelCor[bicicleta.cor] }}</span>
+        <span><b>Proprietário:</b> {{ bicicleta?.usuario?.nome }}</span>
+      </div>
+    </section>
+    <section class="status">
+      <h4>Status atual:</h4>
+      <div class="status-badge">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <span>ROUBADA</span>
+      </div>
+      <div class="data">
+        <div class="item">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span><b>Bicicleta roubada em:</b>{{ bicicleta?.dataRoubo }}</span>
+        </div>
+        <div class="item">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span><b>Bicicleta autenticada em:</b>13/05/2025</span>
+        </div>
+        <div class="item">
+          <ion-icon name="calendar-number-outline"></ion-icon>
+          <span
+            ><b>Data da consulta:</b>{{ dataAtual | date: "dd/MM/yyyy" }}</span
+          >
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="download-container">
+    <button>
+      <ion-icon name="download-outline"></ion-icon>
+      Download Certificado
+    </button>
+  </div>
+</main>

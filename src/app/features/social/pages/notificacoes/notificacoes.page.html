@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="container">
+    <ion-item-divider>
+      <small>Notificações</small>
+    </ion-item-divider>
+
+    <ion-accordion-group>
+      <ion-accordion value="amizade">
+        <ion-item slot="header" lines="none">
+          <small>Pedidos de amizade</small>
+        </ion-item>
+        <div slot="content">
+          <ion-list
+            *ngIf="notificacoesAmizades().length > 0; else transacoesVazias"
+          >
+            @for (notificacao of notificacoesAmizades(); track notificacao.id) {
+            <app-notificacao [notificacao]="notificacao"> </app-notificacao>
+            }
+          </ion-list>
+
+          <ng-template #transacoesVazias>
+            <div class="vazio">
+              <p>Nenhum pedido de amizade</p>
+            </div>
+          </ng-template>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="transacao">
+        <ion-item slot="header" lines="none">
+          <small>{{`Transações (${notificacoesTransacao().length})`}}</small>
+        </ion-item>
+        <div slot="content">
+          <ion-list
+            *ngIf="notificacoesTransacao().length > 0; else transacoesVazias"
+          >
+            @for (notificacao of notificacoesTransacao(); track notificacao.id)
+            {
+            <app-notificacao [notificacao]="notificacao"> </app-notificacao>
+            }
+          </ion-list>
+
+          <ng-template #transacoesVazias>
+            <div class="vazio">
+              <p>Nenhuma transação no momento</p>
+            </div>
+          </ng-template>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+
+    <ion-item slot="header">
+      <small>Social</small>
+    </ion-item>
+
+    <ion-list *ngIf="notificacoesSocial().length > 0; else vazio">
+      @for (notificacao of notificacoes(); track notificacao.id) {
+      <app-notificacao [notificacao]="notificacao"> </app-notificacao>
+      }
+    </ion-list>
+
+    <ng-template #vazio>
+      <div class="vazio">
+        <p>Nenhuma notificação</p>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

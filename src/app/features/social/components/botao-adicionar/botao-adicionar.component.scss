@@ -1,0 +1,19 @@
+ion-fab {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 1rem;
+}
+
+ion-item {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  color: var(--azul-primario);
+
+  ion-icon {
+    margin-right: 1rem;
+  }
+}

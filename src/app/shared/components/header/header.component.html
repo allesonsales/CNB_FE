@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <div class="titulo">
+        <h3>CNB</h3>
+      </div>
+
+      <div class="header-container">
+        <ion-avatar [routerLink]="['/user/', usuarioLogado?.id]">
+          <img src="https://i.pravatar.cc/150" />
+        </ion-avatar>
+
+        <ion-searchbar
+          placeholder="Pesquisar..."
+          (click)="abrirPesquisa()"
+        ></ion-searchbar>
+
+        <ion-button (click)="abrirMenu()" ripp>
+          <ion-icon name="menu-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>

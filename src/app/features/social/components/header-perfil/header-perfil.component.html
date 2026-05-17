@@ -1,0 +1,45 @@
+<ion-item>
+  <div class="header">
+    <div class="social-container">
+      <div class="left-container">
+        <ion-avatar>
+          <img
+            [src]="usuario?.foto ? usuario?.foto : 'https://i.pravatar.cc/150'"
+          />
+        </ion-avatar>
+        <div class="nome-container">
+          <h2>{{ usuario?.nome || "Alleson" }}</h2>
+          <div class="icones-container">
+            <div class="icone">
+              <ion-icon name="people-outline"></ion-icon>
+              <span>465</span>
+            </div>
+            <div class="icone">
+              <ion-icon name="people-outline"></ion-icon>
+              <span>06</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-icon class="ellipsis" name="ellipsis-vertical"></ion-icon>
+    </div>
+    <div class="atividades-container">
+      <div class="atividade">
+        <ion-icon name="analytics-outline"></ion-icon>
+        <Small>325km</Small>
+      </div>
+      <div class="atividade">
+        <ion-icon name="bicycle-outline"></ion-icon>
+        <Small>38 Pedais</Small>
+      </div>
+      <div class="atividade">
+        <ion-icon name="trending-up-outline"></ion-icon>
+        <Small>100M Altimetria</Small>
+      </div>
+      <div class="escudo-container">
+        <img src="" />
+        <small>Peba</small>
+      </div>
+    </div>
+  </div>
+</ion-item>

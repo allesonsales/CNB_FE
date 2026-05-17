@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true">
+  <app-background></app-background>
+  <div class="container">
+    <section class="form-section">
+      <form [formGroup]="login">
+        <img src="assets/images/marca.png" alt="" />
+        <ion-item class="input-container">
+          <ion-input
+            class="input"
+            type="email"
+            label="E-mail"
+            formControlName="email"
+            label-placement="stacked"
+            fill="none"
+            placeholder="Digite seu e-mail..."
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="input-container">
+          <ion-input
+            class="input"
+            [type]="verSenha ? 'text' : 'password'"
+            label="Senha"
+            formControlName="senha"
+            label-placement="stacked"
+            fill="none"
+            placeholder="Digite sua senha..."
+          ></ion-input>
+          <ion-icon
+            [name]="verSenha ? 'eye-off-outline' : 'eye-outline'"
+            slot="end"
+            (click)="verSenha = !verSenha"
+          ></ion-icon>
+        </ion-item>
+
+        <ion-button
+          class="botao-laranja botao-login"
+          slot="end"
+          (click)="logar()"
+          >Entrar</ion-button
+        >
+      </form>
+    </section>
+
+    <section class="social-section">
+      <div class="social-container">
+        <span>Ou entrar com:</span>
+        <div class="botao-container">
+          <ion-button class="botao-azul" (click)="logarUsuarioOutro()">
+            <img src="assets/icon/google.png" />
+            <span>Google</span>
+          </ion-button>
+
+          <ion-button class="botao-azul">
+            <img src="assets/icon/apple.png" />
+            Apple
+          </ion-button>
+        </div>
+        <a routerLink="/cadastre-se">Quero me <strong>cadastrar</strong></a>
+      </div>
+      <a routerLink="/politica-privacidade" class="politica"
+        >Política de privacidade</a
+      >
+    </section>
+  </div>
+</ion-content>

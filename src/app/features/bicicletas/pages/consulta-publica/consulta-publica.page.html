@@ -1,0 +1,48 @@
+<nav *ngIf="!isMobile">
+  <img src="assets/images/marca.png" alt="CNB" />
+  <div class="botao-centro">
+    <button>Sobre o CNB</button>
+    <button>Download CNB</button>
+  </div>
+</nav>
+
+<nav class="mobile" *ngIf="isMobile">
+  <img src="assets/images/marca.png" alt="CNB" />
+  <ion-button>
+    <ion-icon name="menu-outline"></ion-icon>
+  </ion-button>
+</nav>
+
+<main>
+  <section>
+    <div class="text-container">
+      <img src="assets/images/marca.png" alt="CNB" />
+      <span>
+        O CNB é um sistema nacional de registro de bicicletas que visa garantir
+        a autenticidade do veículo e reforçar a segurança e proteção do
+        proprietário.
+      </span>
+    </div>
+    <div class="search-container">
+      <span>Número de série:</span>
+      <div class="button-search-container">
+        <ion-searchbar
+          placeholder="Digite o número de série da bicicleta..."
+          maxlength="22"
+          [(ngModel)]="numeroSerie"
+        ></ion-searchbar>
+        <button (click)="consultar()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="button-container">
+      <button>
+        <ion-icon name="download-outline"></ion-icon>
+        Download CNB
+      </button>
+    </div>
+  </section>
+</main>
+
+<app-background></app-background>

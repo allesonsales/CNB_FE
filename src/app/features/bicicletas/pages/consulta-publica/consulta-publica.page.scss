@@ -1,0 +1,138 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+}
+
+nav img {
+  width: 70px;
+  height: 40px;
+}
+
+nav ion-button {
+  color: var(--laranja-primario);
+  --background: transparent;
+  --background-activated: transparent;
+}
+
+nav .botao-centro {
+  display: flex;
+  gap: 2rem;
+}
+
+nav .botao-centro button {
+  background-color: transparent;
+  color: var(--azul-primario);
+  transition: ease-in-out 0.2s;
+}
+
+nav .botao-centro button:hover {
+  transform: scale(1.1);
+}
+
+nav .botao-direita button {
+  background-color: var(--azul-primario);
+  padding: 1rem;
+  color: #fff;
+  border-radius: 15px;
+}
+
+main {
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  height: 100%;
+}
+
+section .text-container {
+  text-align: center;
+  color: var(--texto-azul);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+section .text-container img {
+  max-width: 90px;
+}
+
+section .search-container {
+  color: var(--azul-primario);
+}
+
+section .search-container span {
+  margin-left: 1rem;
+}
+
+section .button-search-container {
+  display: flex;
+  gap: 1rem;
+}
+
+section .button-search-container button {
+  background-color: var(--azul-primario);
+  color: #fff;
+  min-width: 60px;
+  min-height: 50px;
+  border-radius: 50%;
+  transition: ease-in-out 0.2s;
+
+  ion-icon {
+    font-size: 1rem;
+    transition: ease-in-out 0.2s;
+  }
+}
+
+section .button-container button {
+  background-color: var(--azul-primario);
+  padding: 1rem;
+  color: #fff;
+  border-radius: 15px;
+}
+
+ion-searchbar {
+  --background: #fff;
+  --color: var(--texto-azul);
+  --icon-color: var(--laranja-primario);
+  --clear-button-color: var(--erro);
+  --border: solid 1px var(--laranja-primario);
+  border: solid 0.2px var(--laranja-primario);
+  --border-radius: 25px;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  section .text-container {
+    max-width: 50%;
+  }
+
+  section .text-container img {
+    max-width: 120px;
+  }
+  section .search-container {
+    min-width: 75%;
+  }
+
+  section .search-container button:hover {
+    background-color: var(--laranja-primario);
+
+    ion-icon {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.success {
+  --background: var(--laranja-primario);
+  --color: #fff;
+  text-align: center;
+}
+
+.error {
+  --background: var(--erro);
+  --color: #fff;
+  text-align: center;
+}

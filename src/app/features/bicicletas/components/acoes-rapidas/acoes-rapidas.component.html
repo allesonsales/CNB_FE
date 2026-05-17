@@ -1,0 +1,48 @@
+<ion-item>
+  <div class="acao-container">
+    <div
+      class="botao-container"
+      *ngIf="bicicleta.status != bicicletaStatus.ROUBADA"
+    >
+      <ion-button (click)="abrirModalRoubo()">
+        <ion-icon name="shield-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Comunicar roubo</ion-text>
+    </div>
+    <div class="botao-container">
+      <ion-button>
+        <ion-icon name="locate-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Localização</ion-text>
+    </div>
+    <div
+      class="botao-container"
+      *ngIf="bicicleta.status == bicicletaStatus.PADRAO"
+    >
+      <ion-button (click)="abrirModalTransferencia()">
+        <ion-icon name="swap-horizontal-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Realizar transferência</ion-text>
+    </div>
+
+    <div
+      class="botao-container"
+      *ngIf="bicicleta.status == bicicletaStatus.ROUBADA"
+    >
+      <ion-button (click)="abrirAlertaRecuperada()">
+        <ion-icon name="swap-horizontal-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Marcar como recuperada</ion-text>
+    </div>
+
+    <div
+      class="botao-container"
+      *ngIf="bicicleta.status == bicicletaStatus.TRANSACAO"
+    >
+      <ion-button (click)="abrirModalTransferencia()">
+        <ion-icon name="swap-horizontal-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Cancelar transferência</ion-text>
+    </div>
+  </div>
+</ion-item>

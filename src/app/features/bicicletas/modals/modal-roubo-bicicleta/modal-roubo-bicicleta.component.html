@@ -1,0 +1,176 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Confirmar roubo</ion-title></ion-toolbar
+  >
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item-divider> Dados do Roubo </ion-item-divider>
+  <form [formGroup]="formRoubo">
+    <div class="item-container">
+      <ion-item class="input-container" lines="none">
+        <ion-input
+          class="input"
+          type="text"
+          label="CEP"
+          formControlName="cep"
+          labelPlacement="stacked"
+          fill="none"
+          placeholder="Digite o CEP"
+          maxlength="9"
+          (ionBlur)="buscarCep()"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <ion-text class="erro-modal" *ngIf="cep?.invalid && cep?.touched"
+      >Informe o Cep.</ion-text
+    >
+    <div class="item-container">
+      <ion-item class="input-container" lines="none">
+        <ion-input
+          class="input"
+          type="text"
+          label="Rua"
+          formControlName="logradouro"
+          labelPlacement="stacked"
+          fill="none"
+          placeholder="Digite a rua"
+          maxlength="20"
+        ></ion-input>
+      </ion-item>
+      <ion-text
+        class="erro-modal"
+        *ngIf="logradouro?.invalid && logradouro?.touched"
+        >Informe a rua.</ion-text
+      >
+    </div>
+
+    <div class="item-container">
+      <ion-item class="input-container" lines="none">
+        <ion-input
+          class="input"
+          type="text"
+          label="Bairro"
+          formControlName="bairro"
+          labelPlacement="stacked"
+          fill="none"
+          placeholder="Informe o bairro"
+          maxlength="20"
+        ></ion-input>
+      </ion-item>
+      <ion-text class="erro-modal" *ngIf="bairro?.invalid && bairro?.touched"
+        >Informe o bairro</ion-text
+      >
+    </div>
+
+    <div class="item-container">
+      <div class="double-input">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            class="input"
+            type="text"
+            label="Cidade"
+            formControlName="localidade"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Informe a cidade"
+            maxlength="20"
+          ></ion-input>
+          <ion-text
+            class="erro-modal"
+            *ngIf="bairro?.invalid && bairro?.touched"
+            >Informe o bairro</ion-text
+          >
+        </ion-item>
+        <ion-item class="input-container" lines="none">
+          <ion-select
+            formControlName="estado"
+            label="Estado"
+            labelPlacement="stacked"
+          >
+            <ion-select-option
+              *ngFor="let estado of estados"
+              [value]="estado"
+              >{{ labelEstados[estado] }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </div>
+      <ion-text
+        class="erro-modal"
+        *ngIf="
+          (localidade?.invalid && localidade?.touched) ||
+          (estado?.invalid && estado?.touched)
+        "
+        >Informe a cidade e o estado</ion-text
+      >
+    </div>
+    <div class="item-container">
+      <ion-item
+        class="input-container modal-container"
+        id="open-data-modal"
+        lines="none"
+      >
+        <ion-label position="stacked">Data do roubo</ion-label>
+        <ion-text>
+          {{
+            dataRoubo
+              ? (dataRoubo.value | date: "dd/MM/yyyy")
+              : "Selecione uma data"
+          }}
+        </ion-text>
+
+        <ion-modal
+          [keepContentsMounted]="true"
+          trigger="open-data-modal"
+          class="modal"
+        >
+          <ng-template>
+            <ion-datetime
+              id="datetime"
+              locale="pt-BR"
+              formControlName="dataRoubo"
+              showDefaultButtons="true"
+              showDefaultTitle="true"
+              doneText="Ok"
+              cancelText="Cancelar"
+            >
+              <span slot="title">Selecione a data do roubo.</span></ion-datetime
+            >
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <ion-text class="erro-modal" *ngIf="dataRoubo?.hasError('dataFutura')"
+        >A data do roubo não pode ser maior que a data atual.</ion-text
+      >
+    </div>
+    <div class="item-container">
+      <ion-item class="input-container" lines="none">
+        <ion-select
+          label="Tipo roubo"
+          placeholder="Selecione o tipo do roubo"
+          formControlName="tipoRouboInput"
+        >
+          <ion-select-option *ngFor="let tipo of tipoRoubo" [value]="tipo">{{
+            labelTipoRoubo[tipo]
+          }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text
+        class="erro-modal"
+        *ngIf="tipoRouboInput?.invalid && tipoRouboInput?.touched"
+        >Informe qual foi o tipo do roubo.</ion-text
+      >
+    </div>
+    <div class="button-container">
+      <ion-button (click)="confirmar()">
+        <ion-label>Enviar</ion-label>
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,53 @@
+.item-container {
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0.7rem 0;
+  width: 100%;
+
+  small {
+    position: relative;
+    top: 0;
+  }
+
+  input {
+    width: 100%;
+    max-height: 10px;
+    border: none;
+    outline: none;
+  }
+}
+
+ion-text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  color: var(--azul-primario);
+  border-radius: 15px;
+}
+
+ion-button {
+  margin-top: 1rem;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  .botao-cancelar {
+    --background: var(--texto);
+    opacity: 0.8;
+    width: 40%;
+  }
+}

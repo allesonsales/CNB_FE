@@ -1,0 +1,17 @@
+<ion-card class="bicicleta-card">
+  <div
+    class="bicicleta-container"
+    [ngClass]="{
+      roubada: bicicletaLista.status === bicicletaStatus.ROUBADA,
+    }"
+  >
+    <div class="bicicleta-info-container">
+      <h3>{{ bicicletaLista.marca }} - {{ bicicletaLista.aro }}</h3>
+      <span>{{ bicicletaLista.cor }}</span>
+    </div>
+
+    <ion-button (click)="abrirPopOver($event)" fill="clear">
+      <ion-icon name="ellipsis-vertical"> </ion-icon>
+    </ion-button>
+  </div>
+</ion-card>

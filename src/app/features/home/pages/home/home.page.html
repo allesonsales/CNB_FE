@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="bicicletas" *ngIf="bicicletas.length > 0">
+    <ion-item-divider class="minhas-bicicletas">
+      <small>Minhas bicicletas</small>
+    </ion-item-divider>
+
+    <app-lista-bicicleta [bicicletas]="bicicletas"></app-lista-bicicleta>
+  </div>
+  <div class="container">
+    <app-post></app-post>
+    <app-botao-adicionar></app-botao-adicionar>
+  </div>
+</ion-content>

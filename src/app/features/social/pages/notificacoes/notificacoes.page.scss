@@ -1,0 +1,29 @@
+ion-list,
+ion-content {
+  --background: var(--background);
+  --background: #f5f5f5;
+  background-color: var(--background);
+}
+
+ion-item,
+ion-accordion,
+ion-accordion-group {
+  --background: transparent;
+  --background: #f5f5f5;
+  color: var(--azul-primario);
+}
+
+.container {
+  min-height: 50vh;
+}
+
+.vazio {
+  min-height: 20vh;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  color: var(--texto-azul);
+  font-weight: 300;
+}

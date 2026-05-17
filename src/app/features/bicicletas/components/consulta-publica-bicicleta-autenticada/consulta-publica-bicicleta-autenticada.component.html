@@ -1,0 +1,51 @@
+<main *ngIf="bicicleta != null">
+  <section class="autenticada">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+    <h2>Bicicleta verificada!</h2>
+    <small
+      >Esta bicicleta foi autenticada com sucesso no CNB(Cadastro Nacional de
+      Bicicletas).</small
+    >
+  </section>
+  <div class="section-container">
+    <section class="bicicleta">
+      <h4>Informações da bicicleta</h4>
+      <div class="dados">
+        <span><b>Status:</b> {{ bicicleta.status }}</span>
+        <span><b>Categoria:</b> {{ labelCategoria[bicicleta.categoria] }}</span>
+        <span><b>Tamanho:</b> {{ bicicleta.aro }}</span>
+        <span><b>Marca:</b> {{ labelMarca[bicicleta.marca] }}</span>
+        <span><b>Cor:</b> {{ labelCor[bicicleta.cor] }}</span>
+        <span><b>Proprietário:</b> {{ bicicleta.usuario.nome }}</span>
+      </div>
+    </section>
+    <section class="status">
+      <h4>Status atual:</h4>
+      <div class="status-badge">
+        <ion-icon name="shield-checkmark-outline"></ion-icon>
+        <span>REGULAR</span>
+      </div>
+      <div class="data">
+        <div class="item">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span
+            ><b>Bicicleta autenticada em:</b
+            >{{ bicicleta.dataAutenticacao | date: "dd/MM/yyyy" }}</span
+          >
+        </div>
+        <div class="item">
+          <ion-icon name="calendar-number-outline"></ion-icon>
+          <span
+            ><b>Data da consulta:</b>{{ dataAtual | date: "dd/MM/yyyy" }}</span
+          >
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="download-container">
+    <button>
+      <ion-icon name="download-outline"></ion-icon>
+      Download Certificado
+    </button>
+  </div>
+</main>

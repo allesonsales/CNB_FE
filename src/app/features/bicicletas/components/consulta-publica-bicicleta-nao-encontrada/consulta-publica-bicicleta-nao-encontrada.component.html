@@ -1,0 +1,39 @@
+<main>
+  <section class="erro">
+    <ion-icon name="close-circle-outline"></ion-icon>
+    <h2>Bicicleta não encontrada!</h2>
+    <small>Não encontramos a bicicleta informada em nosso sistema.</small>
+  </section>
+  <div class="section-container">
+    <section class="bicicleta">
+      <h4>Isto pode acontecer por alguns motivos:</h4>
+      <ul>
+        <li>A bicicleta não está cadastrada no CNB.</li>
+        <li>O proprietário da bicicleta não autenticou a bicicleta.</li>
+        <li>O proprietário da bicicleta não autenticou a bicicleta.</li>
+      </ul>
+    </section>
+    <section class="status">
+      <h4>Status atual:</h4>
+      <div class="status-badge">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <span>NÃO ENCONTRADA</span>
+      </div>
+      <div class="data">
+        <div class="item">
+          <ion-icon name="calendar-number-outline"></ion-icon>
+          <span
+            ><b>Data da consulta:</b>{{ dataAtual | date: "dd/MM/yyyy" }}</span
+          >
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="download-container">
+    <button>Cadastrar bicicleta</button>
+    <button>
+      <ion-icon name="search"></ion-icon>
+      Nova consulta
+    </button>
+  </div>
+</main>

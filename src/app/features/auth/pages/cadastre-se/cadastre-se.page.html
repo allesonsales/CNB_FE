@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Criar conta</ion-title></ion-toolbar
+  >
+</ion-header>
+
+<ion-content class="cadastro content">
+  <app-background></app-background>
+  <div class="container">
+    <form [formGroup]="formCadastro">
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            class="input"
+            type="text"
+            label="Nome"
+            formControlName="nome"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Digite seu nome completo..."
+          ></ion-input>
+        </ion-item>
+        <ion-text *ngIf="nome?.touched && nome?.invalid">
+          <small *ngIf="nome?.touched && nome?.errors?.['required']"
+            >O nome é obrigatório.</small
+          >
+          <small *ngIf="nome?.errors?.['nomeInvalido']">
+            Digite o seu nome completo.
+          </small>
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <div class="input">
+            <small>CPF</small>
+            <input
+              type="text"
+              formControlName="cpf"
+              mask="000.000.000-00"
+              placeholder="000.000.000-00"
+              class="input"
+            />
+          </div>
+        </ion-item>
+        <ion-text *ngIf="cpf?.touched && cpf?.invalid">
+          <small *ngIf="cpf?.errors?.['required']">O CPF é obrigatório.</small>
+          <small *ngIf="cpf?.errors?.['minlength']"> CPF inválido.</small>
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            class="input"
+            type="date"
+            label="Data de nascimento"
+            formControlName="dataNascimento"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="000.000.000-00"
+          ></ion-input>
+        </ion-item>
+        <ion-text *ngIf="dataNascimento?.touched && dataNascimento?.invalid">
+          <small *ngIf="dataNascimento?.errors?.['required']">
+            A data de nascimento é obrigatória.
+          </small>
+          <small *ngIf="dataNascimento?.errors?.['menorDeIdade']">
+            Você precisa ter no minímo 18 anos.
+          </small>
+          <small *ngIf="dataNascimento?.errors?.['idadeInvalida']">
+            Verifique a data de nascimento.
+          </small>
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <div class="input">
+            <small>Telefone</small>
+            <input
+              type="text"
+              formControlName="telefone"
+              mask="(00) 9 0000-0000"
+              placeholder="(00) 0 0000-0000"
+              class="input"
+            />
+          </div>
+        </ion-item>
+        <ion-text *ngIf="telefone?.touched && telefone?.invalid">
+          <small *ngIf="telefone?.errors?.['required']">
+            O telefone é obrigatório.
+          </small>
+          <small *ngIf="telefone?.errors?.['minlength']">
+            Verifique o telefone.
+          </small>
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            class="input"
+            type="email"
+            label="E-mail"
+            formControlName="email"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Digite seu e-mail..."
+          ></ion-input>
+        </ion-item>
+        <ion-text *ngIf="email?.touched && email?.invalid">
+          <small *ngIf="email?.errors?.['required']"
+            >O e-mail é obrigatório.</small
+          >
+          <small *ngIf="email?.errors?.['email']"
+            >Digite um e-mail válido.</small
+          >
+        </ion-text>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            class="input"
+            [type]="verSenha ? 'text' : 'password'"
+            label="Senha"
+            formControlName="senha"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Mínimo de 6 caracteres..."
+            minlength="6"
+          ></ion-input>
+          <ion-icon
+            [name]="verSenha ? 'eye-off-outline' : 'eye-outline'"
+            slot="end"
+            (click)="verSenha = !verSenha"
+          ></ion-icon>
+        </ion-item>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            class="input"
+            [type]="verConfirmarSenha ? 'text' : 'password'"
+            label="Confirmar senha"
+            formControlName="confirmarSenha"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Confirme a senha digitada..."
+            minlength="6"
+          ></ion-input>
+          <ion-icon
+            [name]="verConfirmarSenha ? 'eye-off-outline' : 'eye-outline'"
+            slot="end"
+            (click)="verConfirmarSenha = !verConfirmarSenha"
+          ></ion-icon>
+        </ion-item>
+
+        <ion-text *ngIf="confirmarSenha?.touched && senha?.invalid">
+          <small *ngIf="senha?.errors?.['required']">
+            A senha é obrigatória.
+          </small>
+
+          <small
+            *ngIf="
+                senha?.errors?.['minlength'] ||
+                confirmarSenha?.errors?.['minLength']
+              "
+          >
+            A senha deve ter no mínimo 6 caracteres.
+          </small>
+        </ion-text>
+
+        <ion-text
+          *ngIf="
+              formCadastro.errors?.['senhasDiferentes'] &&
+              formCadastro.get('confirmarSenha')?.touched
+            "
+        >
+          <small>As senhas não coincidem.</small>
+        </ion-text>
+      </div>
+      <div class="button-container">
+        <ion-button class="botao-cancelar" (click)="voltar()"
+          >Cancelar</ion-button
+        >
+        <ion-button class="botao-azul" (click)="cadastrar()"
+          >Cadastrar</ion-button
+        >
+      </div>
+    </form>
+  </div>
+</ion-content>
