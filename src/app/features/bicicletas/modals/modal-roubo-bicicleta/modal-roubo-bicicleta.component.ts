@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { IonicModule, LoadingController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular/standalone';
 import { Bicicleta } from 'src/app/models/bicicleta/Bicicleta';
-import { Endereco } from 'src/app/models/endereco/Endereco';
+import { Endereco } from 'src/app/models/endereco/endereco';
 import { Estados } from 'src/app/models/estados/estados';
 import { estadosLabels } from 'src/app/models/estados/labels/estados-labels';
 import { FlashMessage, FlashMessageError } from 'src/app/models/Response';

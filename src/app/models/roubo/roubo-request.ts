@@ -1,5 +1,5 @@
 import { Bicicleta } from '../bicicleta/Bicicleta';
-import { Endereco } from '../endereco/Endereco';
+import { Endereco } from '../endereco/endereco';
 import { RouboStatus } from './roubo-status';
 import { RouboTipo } from './roubo-tipo';
 
