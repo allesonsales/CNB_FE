@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { PoliticaPrivacidadeComponent } from './features/auth/pages/politica-privacidade/politica-privacidade.component';
 import { TabBarComponent } from './shared/components/tabbar/tabbar.component';
 import { HomePage } from './features/home/pages/home/home.page';
 import { BicicletasPage } from './features/bicicletas/pages/bicicletas/bicicletas.page';
@@ -64,8 +63,6 @@ export const routes: Routes = [
   },
 
   { path: 'login', component: LoginPage },
-
-  { path: 'privacidade', component: PoliticaPrivacidadeComponent },
   {
     path: 'cadastre-se',
     loadComponent: () =>
@@ -89,6 +86,9 @@ export const routes: Routes = [
   },
   {
     path: 'politica-privacidade',
-    loadComponent: () => import('./features/auth/pages/politica-privacidade/politica-privacidade.page').then( m => m.PoliticaPrivacidadePage)
+    loadComponent: () =>
+      import('./features/auth/pages/politica-privacidade/politica-privacidade.page').then(
+        (m) => m.PoliticaPrivacidadePage,
+      ),
   },
 ];

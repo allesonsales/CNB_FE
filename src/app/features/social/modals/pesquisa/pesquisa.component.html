@@ -23,8 +23,9 @@
       </ion-item>
     }
   </div>
+  @if (carregando) {
+    <div class="carregando">
+      <ion-spinner></ion-spinner>
+    </div>
+  }
 </ion-content>
-
-@if (carregando) {
-  <ion-spinner></ion-spinner>
-}

@@ -1,0 +1,8 @@
+export enum AmizadeStatusRes {
+  PENDENTE = 'PENDENTE',
+  ACEITA = 'ACEITA',
+  RECUSADA = 'RECUSADA',
+  DESFEITA = 'DESFEITA',
+  CANCELADA = 'CANCELADA',
+  NENHUM = 'NENHUM',
+}

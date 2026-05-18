@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -12,9 +12,23 @@ export class TabSocialComponent implements OnInit {
   @Input() segmentos: {
     icon: string;
     content: string;
+    acao: string;
   }[] = [];
+
+  @Output() acao = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit() {}
+
+  verFotos() {
+    this.acao.emit('fotos');
+  }
+
+  verGrupos() {
+    this.acao.emit('grupos');
+  }
+  verConquistas() {
+    this.acao.emit('conquistas');
+  }
 }

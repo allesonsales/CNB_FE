@@ -1,12 +1,30 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>perfil</ion-title>
-  </ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title></ion-toolbar
+  >
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <app-header-perfil [usuario]="usuario"></app-header-perfil>
-    <app-tab-social [segmentos]="segmentos"></app-tab-social>
+    <app-header-perfil
+      [usuario]="usuario"
+      [amizade]="amizade"
+    ></app-header-perfil>
+    <app-tab-social
+      [segmentos]="segmentos"
+      (acao)="onAcao($event)"
+    ></app-tab-social>
+
+    @switch (abaAtiva) { @case ('fotos') {
+    <app-fotos-perfil></app-fotos-perfil>
+    } @case ('grupos') {<app-grupos-perfil></app-grupos-perfil> } @case
+    ('conquistas') {
+    <app-conquistas-perfil></app-conquistas-perfil>
+    } }
   </div>
 </ion-content>

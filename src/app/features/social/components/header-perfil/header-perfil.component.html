@@ -8,7 +8,7 @@
           />
         </ion-avatar>
         <div class="nome-container">
-          <h2>{{ usuario?.nome || "Alleson" }}</h2>
+          <h3>{{ usuario?.nome || "Alleson" }}</h3>
           <div class="icones-container">
             <div class="icone">
               <ion-icon name="people-outline"></ion-icon>
@@ -21,8 +21,33 @@
           </div>
         </div>
       </div>
-      <ion-icon class="ellipsis" name="ellipsis-vertical"></ion-icon>
+      <ion-icon
+        class="ellipsis"
+        name="ellipsis-vertical"
+        (click)="abrirPopOver($event)"
+      ></ion-icon>
     </div>
+
+    <div class="seguir-container">
+      @if (amizade?.status === amizadeStatus.PENDENTE) {
+        <ion-button expand="block" (click)="cancelarPedidoAmizade()">
+          @if (carregando) {
+            <ion-spinner></ion-spinner>
+          } @else {
+            Cancelar pedido
+          }
+        </ion-button>
+      } @else {
+        <ion-button expand="block" (click)="adicionarAmigo()">
+          @if (carregando) {
+            <ion-spinner></ion-spinner>
+          } @else {
+            Conectar
+          }
+        </ion-button>
+      }
+    </div>
+
     <div class="atividades-container">
       <div class="atividade">
         <ion-icon name="analytics-outline"></ion-icon>

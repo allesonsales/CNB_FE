@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { FlashMessage } from '../models/Response';
-import { UsuarioCadastrar } from '../models/Usuario';
+import { Usuario, UsuarioCadastrar } from '../models/Usuario';
 import { UsuarioResumido } from '../models/usuario/usuario-resumido';
 
 @Injectable({
@@ -23,6 +23,13 @@ export class UsuarioService {
   buscarPorCpf(cpf: string) {
     return this.http.get<UsuarioResumido>(
       `${environment.apiUrl}${this.endPoit}/cpf/${cpf}`,
+      { withCredentials: true },
+    );
+  }
+
+  buscarPorId(id: number) {
+    return this.http.get<UsuarioResumido>(
+      `${environment.apiUrl}${this.endPoit}/id/${id}`,
       { withCredentials: true },
     );
   }

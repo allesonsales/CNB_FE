@@ -13,6 +13,7 @@ ion-searchbar {
   border: solid 0.2px var(--laranja-primario);
   font-size: 0.8rem;
   background-color: #fff;
+  --box-shadow: none;
 }
 
 ion-toolbar {
@@ -48,6 +49,7 @@ ion-button {
   --background: transparent;
   --background-activated: transparent;
   --color: var(--laranja-primario);
+  --box-shadow: none;
 }
 
 .item-container {
@@ -56,4 +58,12 @@ ion-button {
   justify-content: center;
   align-items: center;
   color: var(--texto-azul);
+}
+
+.carregando {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --color: var(--laranja-primario);
 }

@@ -48,9 +48,11 @@ export class PesquisaComponent {
       .subscribe({
         next: async (res: UsuarioLista[]) => {
           this.listaPesquisa = res;
+          this.carregando = false;
         },
         error: (err) => {
           console.log(err);
+          this.carregando = false;
         },
       });
   }
@@ -62,6 +64,7 @@ export class PesquisaComponent {
 
     if (!valor.trim()) {
       this.listaPesquisa = [];
+      this.carregando = false;
       return;
     }
 

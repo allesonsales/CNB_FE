@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PoliticaPrivacidadeComponent } from './politica-privacidade.component';
+import { AcoesPerfilComponent } from './acoes-perfil.component';
 
-describe('PoliticaPrivacidadeComponent', () => {
-  let component: PoliticaPrivacidadeComponent;
-  let fixture: ComponentFixture<PoliticaPrivacidadeComponent>;
+describe('AcoesPerfilComponent', () => {
+  let component: AcoesPerfilComponent;
+  let fixture: ComponentFixture<AcoesPerfilComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PoliticaPrivacidadeComponent ],
+      declarations: [ AcoesPerfilComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PoliticaPrivacidadeComponent);
+    fixture = TestBed.createComponent(AcoesPerfilComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

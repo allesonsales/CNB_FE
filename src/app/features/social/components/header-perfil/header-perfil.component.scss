@@ -27,7 +27,7 @@
   gap: 0.5rem;
 }
 
-h2 {
+h3 {
   margin: 0;
 }
 
@@ -39,11 +39,20 @@ h2 {
 .icone {
   display: flex;
   gap: 0.5rem;
+  font-size: 0.8rem;
 }
 
 ion-icon.ellipsis {
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: var(--laranja-primario);
+}
+
+.seguir-container {
+  width: 100%;
+
+  ion-button {
+    --background: var(--azul-primario);
+  }
 }
 
 .atividades-container {
@@ -64,6 +73,9 @@ ion-icon.ellipsis {
 }
 
 ion-avatar {
-  min-width: 50px;
-  height: 50px;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 }

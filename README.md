@@ -80,7 +80,7 @@
 ## Equipe de desenvolvimento
 
 [Alleson Figueredo Sales](https://github.com/allesonsales)
-[Beatriz Santos Silva](https://github.com/allesonsales)
+[Beatriz Santos Silva](https://github.com/Beatriz-byte)
 [Gabriel Figueredo](https://github.com/Darksungab)
 
 ## Licença
