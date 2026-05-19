@@ -15,3 +15,21 @@ ion-text {
   display: flex;
   width: 100%;
 }
+
+.input-container {
+  color: var(--texto-azul);
+}
+
+ion-input,
+ion-select {
+  --color: #12306c;
+  --placeholder-color: #12306c;
+
+  &::part(label) {
+    color: #12306c;
+  }
+}
+
+ion-select::part(text) {
+  color: #12306c;
+}

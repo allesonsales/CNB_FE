@@ -13,10 +13,12 @@ import { ConquistasPerfilComponent } from '../../components/conquistas-perfil/co
 import { AmizadeService } from 'src/app/services/amizade-service';
 import { ActivatedRoute } from '@angular/router';
 import { MensagemService } from 'src/app/services/mensagem-service';
-import { FlashMessage } from 'src/app/models/Response';
 import { UsuarioResumido } from 'src/app/models/usuario/usuario-resumido';
-import { AmizadeStatusRes } from 'src/app/models/amizade/amizade-status';
 import { Amizade } from 'src/app/models/amizade/amizade';
+import { AuthService } from 'src/app/services/auth-service';
+import { UsuarioLogado } from 'src/app/models/usuario/usuario-logado';
+import { PerfilService } from 'src/app/services/perfil-service';
+import { Perfil } from 'src/app/models/perfil/perfil';
 
 @Component({
   selector: 'app-perfil',
@@ -36,8 +38,7 @@ import { Amizade } from 'src/app/models/amizade/amizade';
 export class PerfilPage {
   usuario: UsuarioResumido | null = null;
   abaAtiva: string = 'fotos';
-  usuarioId: number | null = null;
-  amizade: Amizade | null = null;
+  perfil: Perfil | null = null;
 
   segmentos = [
     {
@@ -58,26 +59,19 @@ export class PerfilPage {
   ];
 
   constructor(
-    private usuarioService: UsuarioService,
-    private navCtrl: NavController,
-    private amizadeService: AmizadeService,
     private activeRoute: ActivatedRoute,
+    private navCtrl: NavController,
+    private perfilService: PerfilService,
     private mensagemService: MensagemService,
   ) {}
 
   ionViewWillEnter() {
     const id = Number(this.activeRoute.snapshot.paramMap.get('id'));
-    this.usuarioService.buscarPorId(id).subscribe({
-      next: (res: UsuarioResumido) => {
-        console.log(res);
-        this.usuario = res;
-      },
-    });
 
-    this.amizadeService.verificarAmizade(id).subscribe({
-      next: (res: Amizade) => {
-        console.log(res);
-        this.amizade = res;
+    this.perfilService.preencherPerfil(id).subscribe({
+      next: (res: Perfil) => {
+        this.usuario = res.usuario ?? null;
+        this.perfil = res;
       },
     });
   }

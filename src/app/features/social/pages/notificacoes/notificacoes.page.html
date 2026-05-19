@@ -7,22 +7,22 @@
     <ion-accordion-group>
       <ion-accordion value="amizade">
         <ion-item slot="header" lines="none">
-          <small>Pedidos de amizade</small>
+          <small>{{`Amizades (${notificacoesAmizades().length})`}}</small>
         </ion-item>
         <div slot="content">
-          <ion-list
-            *ngIf="notificacoesAmizades().length > 0; else transacoesVazias"
-          >
+          @if (notificacoesAmizades().length > 0) {
+
+          <ion-list>
             @for (notificacao of notificacoesAmizades(); track notificacao.id) {
             <app-notificacao [notificacao]="notificacao"> </app-notificacao>
             }
           </ion-list>
+          }@else {
 
-          <ng-template #transacoesVazias>
-            <div class="vazio">
-              <p>Nenhum pedido de amizade</p>
-            </div>
-          </ng-template>
+          <div class="vazio">
+            <p>Nenhum pedido de amizade</p>
+          </div>
+          }
         </div>
       </ion-accordion>
       <ion-accordion value="transacao">
@@ -30,20 +30,18 @@
           <small>{{`Transações (${notificacoesTransacao().length})`}}</small>
         </ion-item>
         <div slot="content">
-          <ion-list
-            *ngIf="notificacoesTransacao().length > 0; else transacoesVazias"
-          >
+          @if (notificacoesTransacao().length > 0) {
+          <ion-list>
             @for (notificacao of notificacoesTransacao(); track notificacao.id)
             {
             <app-notificacao [notificacao]="notificacao"> </app-notificacao>
             }
           </ion-list>
-
-          <ng-template #transacoesVazias>
-            <div class="vazio">
-              <p>Nenhuma transação no momento</p>
-            </div>
-          </ng-template>
+          } @else {
+          <div class="vazio">
+            <p>Nenhuma transação no momento</p>
+          </div>
+          }
         </div>
       </ion-accordion>
     </ion-accordion-group>
@@ -52,16 +50,18 @@
       <small>Social</small>
     </ion-item>
 
-    <ion-list *ngIf="notificacoesSocial().length > 0; else vazio">
+    @if (notificacoesSocial().length > 0) {
+
+    <ion-list>
       @for (notificacao of notificacoes(); track notificacao.id) {
       <app-notificacao [notificacao]="notificacao"> </app-notificacao>
       }
     </ion-list>
+    }@else {
+    <div class="vazio">
+      <p>Nenhuma notificação</p>
+    </div>
 
-    <ng-template #vazio>
-      <div class="vazio">
-        <p>Nenhuma notificação</p>
-      </div>
-    </ng-template>
+    }
   </div>
 </ion-content>

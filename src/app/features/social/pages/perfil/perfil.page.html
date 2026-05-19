@@ -11,10 +11,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <app-header-perfil
-      [usuario]="usuario"
-      [amizade]="amizade"
-    ></app-header-perfil>
+    <app-header-perfil [dadosPerfil]="perfil"></app-header-perfil>
     <app-tab-social
       [segmentos]="segmentos"
       (acao)="onAcao($event)"

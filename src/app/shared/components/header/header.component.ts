@@ -19,6 +19,7 @@ import { UsuarioLista } from 'src/app/models/usuario/usuario-lista';
 import { UsuarioLogado } from 'src/app/models/usuario/usuario-logado';
 import { AuthService } from 'src/app/services/auth-service';
 import { PesquisaService } from 'src/app/services/pesquisa-service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -28,9 +29,14 @@ import { PesquisaService } from 'src/app/services/pesquisa-service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @Input() mostrarPesquisar: boolean = true;
   @Input() mostrarFoto: boolean = true;
+  usuarioLogado: UsuarioLogado | null = null;
+
+  get fotoUrl(): string {
+    return `${environment.apiUrl}${this.usuarioLogado?.foto}`;
+  }
 
   constructor(
     private modalCtrl: ModalController,
@@ -39,13 +45,14 @@ export class HeaderComponent {
     private pesquisaService: PesquisaService,
   ) {}
 
-  usuarioLogado: UsuarioLogado | null = null;
   listaUsuarios: UsuarioLista[] = [];
 
   pesquisaSubject = new Subject<string>();
 
-  ionViewWillEnter() {
+  ngOnInit() {
     this.usuarioLogado = this.authService.usuarioLogado();
+    console.log(this.fotoUrl);
+    console.log(this.usuarioLogado);
     this.pesquisaSubject
       .pipe(
         debounceTime(1000),

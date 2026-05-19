@@ -1,0 +1,43 @@
+ion-item {
+  --border-radius: 25px;
+  --color: var(--texto-azul);
+}
+
+.acao-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0.5rem;
+}
+
+.botao-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  border-radius: 100px;
+}
+
+ion-button {
+  min-width: 70px;
+  width: 33%;
+  height: 70px;
+  --border-radius: 50%;
+  --background: var(--background-botao-cinza);
+  --color: var(--texto-azul);
+  --background-activated: var(--background-botao-cinza);
+  --color-activated: var(--laranja-primario);
+}
+
+ion-icon {
+  font-size: 4rem;
+}
+
+ion-text {
+  --color: var(--azul-primario);
+  color: var(--texto-azul);
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+}

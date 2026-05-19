@@ -4,6 +4,7 @@ import { FlashMessage } from '../models/Response';
 import { environment } from 'src/environments/environment';
 import { AmizadeStatusRes } from '../models/amizade/amizade-status';
 import { Amizade } from '../models/amizade/amizade';
+import { AmizadeAcao } from '../models/amizade/amizade-acao';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,7 @@ export class AmizadeService {
     );
   }
 
-  atualizarAmizade(amizadeId: number, status: AmizadeStatusRes) {
+  atualizarAmizade(amizadeId: number, status: AmizadeStatusRes | AmizadeAcao) {
     return this.http.patch<FlashMessage>(
       `${environment.apiUrl}${this.endPoint}/${amizadeId}`,
       { status },

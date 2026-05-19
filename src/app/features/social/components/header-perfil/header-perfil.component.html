@@ -3,20 +3,18 @@
     <div class="social-container">
       <div class="left-container">
         <ion-avatar>
-          <img
-            [src]="usuario?.foto ? usuario?.foto : 'https://i.pravatar.cc/150'"
-          />
+          <img [src]="fotoUrl" />
         </ion-avatar>
         <div class="nome-container">
-          <h3>{{ usuario?.nome || "Alleson" }}</h3>
+          <h3>{{ usuario?.nome }}</h3>
           <div class="icones-container">
             <div class="icone">
               <ion-icon name="people-outline"></ion-icon>
-              <span>465</span>
+              <span>{{ dadosPerfil?.numeroAmigos }}</span>
             </div>
             <div class="icone">
               <ion-icon name="people-outline"></ion-icon>
-              <span>06</span>
+              <span>{{ dadosPerfil?.numeroGrupos }}</span>
             </div>
           </div>
         </div>
@@ -28,38 +26,40 @@
       ></ion-icon>
     </div>
 
-    <div class="seguir-container">
-      @if (amizade?.status === amizadeStatus.PENDENTE) {
-        <ion-button expand="block" (click)="cancelarPedidoAmizade()">
-          @if (carregando) {
-            <ion-spinner></ion-spinner>
-          } @else {
-            Cancelar pedido
-          }
-        </ion-button>
-      } @else {
-        <ion-button expand="block" (click)="adicionarAmigo()">
-          @if (carregando) {
-            <ion-spinner></ion-spinner>
-          } @else {
-            Conectar
-          }
-        </ion-button>
-      }
-    </div>
+    @if (!isMeuPerfil) {
+      <div class="seguir-container">
+        @if (dadosPerfil?.amizade?.status === amizadeStatus.PENDENTE) {
+          <ion-button expand="block" (click)="cancelarPedidoAmizade()">
+            @if (carregando) {
+              <ion-spinner></ion-spinner>
+            } @else {
+              Cancelar pedido
+            }
+          </ion-button>
+        } @else {
+          <ion-button expand="block" (click)="adicionarAmigo()">
+            @if (carregando) {
+              <ion-spinner></ion-spinner>
+            } @else {
+              Conectar
+            }
+          </ion-button>
+        }
+      </div>
+    }
 
     <div class="atividades-container">
       <div class="atividade">
         <ion-icon name="analytics-outline"></ion-icon>
-        <Small>325km</Small>
+        <Small>{{ dadosPerfil?.numeroKm }}km</Small>
       </div>
       <div class="atividade">
         <ion-icon name="bicycle-outline"></ion-icon>
-        <Small>38 Pedais</Small>
+        <Small>{{ dadosPerfil?.numeroPedais }} Pedais</Small>
       </div>
       <div class="atividade">
         <ion-icon name="trending-up-outline"></ion-icon>
-        <Small>100M Altimetria</Small>
+        <Small>{{ dadosPerfil?.numeroAltimetria }} Altimetria</Small>
       </div>
       <div class="escudo-container">
         <img src="" />

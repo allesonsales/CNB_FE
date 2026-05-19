@@ -1,10 +1,4 @@
-<div
-  class="notificacao-right-container"
-  *ngIf="
-    tipoNotificacao === notificacaoTipo.TRANSACAO_AGUARDANDO_ACEITE_COMPRADOR ||
-    tipoNotificacao == notificacaoTipo.TRANSACAO_AGUARDANDO_CONFIRMACAO_VENDEDOR
-  "
->
+<div class="notificacao-right-container">
   <div class="acao-container aceite">
     <ion-button (click)="emitirAcaoCancelar()">
       <ion-icon name="close"></ion-icon>

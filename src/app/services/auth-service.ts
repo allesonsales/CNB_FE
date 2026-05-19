@@ -25,6 +25,7 @@ export class AuthService {
       })
       .pipe(
         tap((res: any) => {
+          console.log('logadin', res);
           this.usuarioLogado.set(res.usuario);
         }),
       );
