@@ -44,6 +44,9 @@ import {
   downloadOutline,
   closeCircleOutline,
   alertCircleOutline,
+  lockClosedOutline,
+  personAdd,
+  megaphone,
 } from 'ionicons/icons';
 
 export function registrarIcones() {
@@ -89,5 +92,8 @@ export function registrarIcones() {
     downloadOutline,
     closeCircleOutline,
     alertCircleOutline,
+    lockClosedOutline,
+    personAdd,
+    megaphone,
   });
 }

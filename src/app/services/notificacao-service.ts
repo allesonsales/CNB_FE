@@ -34,4 +34,12 @@ export class NotificacaoService {
       },
     );
   }
+
+  marcarTodasComoLidas(ids: number[]) {
+    return this.http.patch<void>(
+      `${environment.apiUrl}${this.endPoint}/marcar/lidas`,
+      ids,
+      { withCredentials: true },
+    );
+  }
 }

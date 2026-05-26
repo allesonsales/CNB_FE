@@ -11,15 +11,18 @@
     }"
   >
     <div class="notificacao-left">
-      <div class="notificacao-avatar">
-        @if (notificacao.thumbnail) {
+      @if (notificacao.thumbnail) {
+        <div
+          class="notificacao-avatar"
+          [routerLink]="['/user', notificacao.remetente.id]"
+        >
           <ion-avatar>
             <img [src]="fotoUrl" />
           </ion-avatar>
-        }
 
-        <ion-icon [name]="getIcon(notificacao.tipo)"></ion-icon>
-      </div>
+          <ion-icon [name]="getIcon(notificacao.tipo)"></ion-icon>
+        </div>
+      }
 
       <div class="notificacao-texto-container">
         <h3>

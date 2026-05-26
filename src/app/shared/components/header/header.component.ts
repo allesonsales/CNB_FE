@@ -51,8 +51,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.usuarioLogado = this.authService.usuarioLogado();
-    console.log(this.fotoUrl);
-    console.log(this.usuarioLogado);
     this.pesquisaSubject
       .pipe(
         debounceTime(1000),
@@ -62,12 +60,9 @@ export class HeaderComponent implements OnInit {
       )
       .subscribe({
         next: (res: UsuarioLista[]) => {
-          console.log(res);
           this.listaUsuarios = res;
         },
-        error: (err) => {
-          console.log(err);
-        },
+        error: (err) => {},
       });
   }
 

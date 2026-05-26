@@ -79,7 +79,6 @@ export class ModalEditarBicicletaComponent {
   }
 
   ionViewWillEnter() {
-    console.log(this.bicicleta);
     this.formBicicleta.patchValue({
       numeroSerie: this.bicicleta?.numeroSerie,
       marca: this.bicicleta?.marca,

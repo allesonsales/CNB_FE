@@ -1,0 +1,58 @@
+.senha-container {
+  color: var(--laranja-primario);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.carregando {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--laranja-primario);
+  --color: var(--laranja-primario);
+  min-height: 300px;
+}
+
+.alterar-senha {
+  background-color: rgba(0, 0, 0, 0.247);
+  --background: rgba(0, 0, 0, 0.218);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  background: blue;
+}
+
+ion-icon {
+  color: var(--laranja-primario);
+}
+
+ion-icon.fechar {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  color: var(--laranja-primario);
+  font-size: 1.5rem;
+  z-index: 100;
+}
+
+form {
+  height: 100%;
+  padding: 4rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-container span {
+  text-align: center;
+  color: var(--azul-primario);
+}

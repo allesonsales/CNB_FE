@@ -25,27 +25,32 @@
             placeholder="Digite seu nome completo..."
           ></ion-input>
         </ion-item>
-        <ion-text *ngIf="nome?.touched && nome?.invalid">
-          <small *ngIf="nome?.touched && nome?.errors?.['required']"
-            >O nome é obrigatório.</small
-          >
-          <small *ngIf="nome?.errors?.['nomeInvalido']">
-            Digite o seu nome completo.
-          </small>
+        @if (nome?.touched && nome?.invalid) {
+
+        <ion-text>
+          @if (nome?.touched && nome?.errors?.['required']) {
+
+          <small>O nome é obrigatório.</small>
+          } @else if (nome?.errors?.['nomeInvalido']) {
+
+          <small> Digite o seu nome completo. </small>
+          }
         </ion-text>
+        }
       </div>
       <div class="item-container">
         <ion-item class="input-container" lines="none">
-          <div class="input">
-            <small>CPF</small>
-            <input
-              type="text"
-              formControlName="cpf"
-              mask="000.000.000-00"
-              placeholder="000.000.000-00"
-              class="input"
-            />
-          </div>
+          <ion-input
+            class="input"
+            type="text"
+            label="CPF"
+            formControlName="cpf"
+            labelPlacement="stacked"
+            fill="none"
+            maxlength="14"
+            appCpfMask
+            placeholder="Digite seu CPF.."
+          ></ion-input>
         </ion-item>
         <ion-text *ngIf="cpf?.touched && cpf?.invalid">
           <small *ngIf="cpf?.errors?.['required']">O CPF é obrigatório.</small>
@@ -61,7 +66,6 @@
             formControlName="dataNascimento"
             labelPlacement="stacked"
             fill="none"
-            placeholder="000.000.000-00"
           ></ion-input>
         </ion-item>
         <ion-text *ngIf="dataNascimento?.touched && dataNascimento?.invalid">
@@ -78,25 +82,29 @@
       </div>
       <div class="item-container">
         <ion-item class="input-container" lines="none">
-          <div class="input">
-            <small>Telefone</small>
-            <input
-              type="text"
-              formControlName="telefone"
-              mask="(00) 9 0000-0000"
-              placeholder="(00) 0 0000-0000"
-              class="input"
-            />
-          </div>
+          <ion-input
+            class="input"
+            type="text"
+            label="Telefone"
+            formControlName="telefone"
+            labelPlacement="stacked"
+            fill="none"
+            appTelMaskDirective
+            placeholder="(11) 9 0000-0000"
+          ></ion-input>
         </ion-item>
-        <ion-text *ngIf="telefone?.touched && telefone?.invalid">
-          <small *ngIf="telefone?.errors?.['required']">
-            O telefone é obrigatório.
-          </small>
-          <small *ngIf="telefone?.errors?.['minlength']">
-            Verifique o telefone.
-          </small>
+        @if (telefone?.touched && telefone?.invalid) {
+
+        <ion-text>
+          @if (telefone?.errors?.['required']) {
+
+          <small> O telefone é obrigatório. </small>
+          } @else if(telefone?.errors?.['minlength']) {
+
+          <small> Verifique o telefone. </small>
+          }
         </ion-text>
+        }
       </div>
       <div class="item-container">
         <ion-item class="input-container" lines="none">
@@ -110,14 +118,18 @@
             placeholder="Digite seu e-mail..."
           ></ion-input>
         </ion-item>
-        <ion-text *ngIf="email?.touched && email?.invalid">
-          <small *ngIf="email?.errors?.['required']"
-            >O e-mail é obrigatório.</small
-          >
-          <small *ngIf="email?.errors?.['email']"
-            >Digite um e-mail válido.</small
-          >
+        @if (email?.touched && email?.invalid) {
+
+        <ion-text>
+          @if (email?.errors?.['required']) {
+
+          <small>O e-mail é obrigatório.</small>
+          } @else if (email?.errors?.['email']) {
+
+          <small>Digite um e-mail válido.</small>
+          }
         </ion-text>
+        }
       </div>
       <div class="item-container">
         <ion-item class="input-container" lines="none">

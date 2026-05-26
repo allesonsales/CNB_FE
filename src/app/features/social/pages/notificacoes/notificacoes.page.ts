@@ -33,11 +33,39 @@ export class NotificacoesPage {
 
   notificacoesSocial = computed(() => {
     return this.notificacoes().filter(
-      (notificacao) => notificacao.tipo == this.tipoNotificacao.SOCIAL,
+      (notificacao) =>
+        notificacao.tipo == this.tipoNotificacao.SOCIAL ||
+        notificacao.tipo == this.tipoNotificacao.ROUBO,
     );
   });
 
-  ionViewWillEnter() {
-    console.log(this.notificacoesTransacao());
+  onAccordionChange(event: any) {
+    if (event.detail.value === 'amizade') {
+      this.marcarNotificacoesAmizadesLidas();
+    } else if (event.detail.value === 'transacao') {
+      this.marcarNotificacoesTransacoesLidas();
+    }
   }
+
+  marcarNotificacoesAmizadesLidas() {
+    const notificacoesSemAcao = this.notificacoesAmizades()
+      .filter((notificacao) => notificacao.acaoId == null)
+      .map((notificacao) => notificacao.id);
+
+    this.notificacaoService
+      .marcarTodasComoLidas(notificacoesSemAcao)
+      .subscribe();
+  }
+
+  marcarNotificacoesTransacoesLidas() {
+    const notificacoesSemAcao = this.notificacoesTransacao()
+      .filter((notificacao) => notificacao.acaoId == null)
+      .map((notificacao) => notificacao.id);
+
+    this.notificacaoService
+      .marcarTodasComoLidas(notificacoesSemAcao)
+      .subscribe();
+  }
+
+  ionViewWillEnter() {}
 }

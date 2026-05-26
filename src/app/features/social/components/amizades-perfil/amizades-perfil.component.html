@@ -1,0 +1,16 @@
+<ion-content>
+  <div class="container">
+    @for (amizade of amigos; track amizade.id) {
+      <ion-item lines="none">
+        <div class="item-container" (click)="irPara(amizade.id)">
+          <ion-avatar>
+            <img [src]="environment.apiUrl + amizade.foto" />
+          </ion-avatar>
+          <span>{{
+            amizade.nome.split(" ")[0] + " " + amizade.nome.split(" ")[1]
+          }}</span>
+        </div>
+      </ion-item>
+    }
+  </div>
+</ion-content>

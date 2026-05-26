@@ -12,13 +12,17 @@
     <ion-content class="ion-padding">
       <ion-menu-toggle>
         <div class="menu-container">
-          <div class="menu-item">
-            <ion-icon name="log-out-outline"></ion-icon>
-            <span>Minhas conquistas</span>
+          <div class="menu-item" (click)="irPara('consulta-publica')">
+            <ion-icon name="search"></ion-icon>
+            <span>Consultar bicicleta</span>
           </div>
           <div class="menu-item">
             <ion-icon name="people-outline"></ion-icon>
             <span>Criar grupo</span>
+          </div>
+          <div class="menu-item" (click)="irParaConquista()">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Minhas conquistas</span>
           </div>
           <div class="menu-item" (click)="irPara('politica-privacidade')">
             <ion-icon name="log-out-outline"></ion-icon>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{
+      `Localização - ${bicicleta.numeroSerie}`
+    }}</ion-title></ion-toolbar
+  >
+</ion-header>
+<ion-content fullscreen="true">
+  <section>
+    <div id="map"></div>
+
+    <div class="botao-container">
+      @if (bicicleta.status == statusBicicleta.ROUBADA) {
+        <ion-button>Marcar como recuperada.</ion-button>
+      } @else {
+        <ion-button>Marcar como roubada</ion-button>
+      }
+      <ion-button>Atualizar localização</ion-button>
+    </div>
+  </section>
+</ion-content>

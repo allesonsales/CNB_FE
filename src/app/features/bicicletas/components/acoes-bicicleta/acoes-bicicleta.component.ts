@@ -18,6 +18,7 @@ import { BicicletaLista } from 'src/app/models/bicicleta/Bicicleta';
 import { BicicletaStatus } from 'src/app/models/bicicleta/BicicletaStatus';
 import { RouboService } from 'src/app/services/roubo-service';
 import { QrCodeBicicletaComponent } from '../qr-code-bicicleta/qr-code-bicicleta.component';
+import { LocalizacaoBicicletaComponent } from '../localizacao-bicicleta/localizacao-bicicleta.component';
 
 @Component({
   selector: 'app-acoes-bicicleta',
@@ -82,6 +83,16 @@ export class AcoesBicicletaComponent {
     }
   }
 
+  async abrirModalLocalizacao() {
+    await this.popOverCtrl.dismiss();
+
+    const modal = await this.modalCtrl.create({
+      component: LocalizacaoBicicletaComponent,
+    });
+
+    await modal.present();
+  }
+
   async abrirModalEditar() {
     this.popOverCtrl.dismiss();
 
@@ -138,7 +149,6 @@ export class AcoesBicicletaComponent {
 
     this.bicicletaService.autenticarBicicleta(numeroSerie).subscribe({
       next: async (res) => {
-        console.log(res);
         await loading.dismiss();
         const modal = await this.modalCtrl.create({
           component: QrCodeBicicletaComponent,
@@ -183,8 +193,8 @@ export class AcoesBicicletaComponent {
     await this.popOverCtrl.dismiss();
     const alertRecuperada = await this.alertCtrl.create({
       animated: true,
-      message: 'Deseja mesmo informar que a bicicletea foi recuperada?',
-      cssClass: 'custom-loading',
+      message: 'Deseja realmente marcar a bicicleta como recuperada?',
+      cssClass: 'custom-alert',
       buttons: [
         {
           text: 'Não',
@@ -215,7 +225,6 @@ export class AcoesBicicletaComponent {
     this.rouboService.marcarComoRecuperada(this.bicicleta.id).subscribe({
       next: async (res: FlashMessage) => {
         await loading.dismiss();
-        console.log(res);
         this.mensagemService.enviarMensagem(res);
 
         this.bicicletaService.bicicletas.update((lista) =>
@@ -225,9 +234,10 @@ export class AcoesBicicletaComponent {
               : bicicleta,
           ),
         );
+
+        this.router.navigate(['/bicicletas']);
       },
       error: async (err: FlashMessageError) => {
-        console.log(err);
         await loading.dismiss();
         this.mensagemService.enviarMensagem(err.error);
       },

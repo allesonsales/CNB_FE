@@ -33,6 +33,12 @@ ion-item {
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
+
+  ion-icon {
+    --color: red;
+    background-color: var(--laranja-primario);
+    border-radius: 50%;
+  }
 }
 
 .notificacao-avatar {
@@ -49,8 +55,8 @@ ion-item {
   ion-icon {
     position: absolute;
     right: 0;
-    bottom: -0.2rem;
-    color: var(--laranja-primario);
+    top: 2rem;
+    color: var(--azul-primario);
     font-size: 1.5rem;
   }
 }
@@ -79,6 +85,8 @@ ion-item {
   color: #fff;
 
   ion-icon {
-    color: #fff;
+    color: var(--laranja-primario);
+    background-color: #fff;
+    border-radius: 50%;
   }
 }

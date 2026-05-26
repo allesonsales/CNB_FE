@@ -14,13 +14,19 @@
 
 <ion-content>
   <div class="container">
-    @for (item of listaPesquisa; track item.id) {
-      <ion-item (click)="irPara(item.id)">
-        <div class="item-container">
-          <ion-avatar> <img src="https://i.pravatar.cc/150" /> </ion-avatar>
-          <ion-label>{{ item.nome }}</ion-label>
-        </div>
-      </ion-item>
+    @if (listaPesquisa.length > 0) {
+      @for (item of listaPesquisa; track item.id) {
+        <ion-item (click)="irPara(item.id)">
+          <div class="item-container">
+            <ion-avatar> <img [src]="item.foto" /> </ion-avatar>
+            <ion-label>{{ item.nome }}</ion-label>
+          </div>
+        </ion-item>
+      }
+    } @else {
+      <div class="vazio">
+        <p>Nenhum resultado encontrado.</p>
+      </div>
     }
   </div>
   @if (carregando) {

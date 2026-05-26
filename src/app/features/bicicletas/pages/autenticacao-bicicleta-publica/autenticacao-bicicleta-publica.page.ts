@@ -8,7 +8,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { BicicletaService } from 'src/app/services/bicicleta-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Bicicleta } from 'src/app/models/bicicleta/Bicicleta';
 import { FlashMessageError } from 'src/app/models/Response';
 import { MensagemService } from 'src/app/services/mensagem-service';
@@ -34,6 +34,7 @@ import { ConsultaPublicaService } from 'src/app/services/consulta-publica-servic
     ConsultaPublicaBicicletaRoubadaComponent,
     ConsultaPublicaBicicletaAutenticadaComponent,
     BackgroundComponent,
+    RouterModule,
   ],
 })
 export class AutenticacaoBicicletaPublicaPage implements OnInit {
@@ -68,11 +69,8 @@ export class AutenticacaoBicicletaPublicaPage implements OnInit {
       .subscribe({
         next: (res: BicicletaConsultaPublica) => {
           this.bicicleta = res;
-          console.log(res);
         },
-        error: (err) => {
-          console.log(err);
-        },
+        error: (err) => {},
       });
   }
 }

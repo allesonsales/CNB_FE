@@ -1,22 +1,36 @@
 <div class="container">
   <ion-item-group>
     <ion-item lines="none">
-      <ion-label>Marca:</ion-label>
-      <ion-note>{{ bicicleta?.marca }}</ion-note>
+      <div class="item-container">
+        <ion-label>Categoria:</ion-label>
+        <ion-note slot="">{{ bicicleta?.categoria }}</ion-note>
+      </div>
     </ion-item>
     <ion-item lines="none">
-      <ion-label>Aro:</ion-label>
-      <ion-note slot="end">{{ bicicleta?.aro }}</ion-note>
+      <div class="item-container">
+        <ion-label>Marca:</ion-label>
+        <ion-note slot="">{{ bicicleta?.marca }}</ion-note>
+      </div>
     </ion-item>
     <ion-item lines="none">
-      <ion-label>Cor:</ion-label>
-      <ion-note slot="end">{{ bicicleta?.cor }}</ion-note>
+      <div class="item-container">
+        <ion-label>Aro:</ion-label>
+        <ion-note slot="end">{{ bicicleta?.aro }}</ion-note>
+      </div>
     </ion-item>
     <ion-item lines="none">
-      <ion-label>Numero série:</ion-label>
-      <ion-note slot="end" class="numero">{{
-        bicicleta?.numeroSerie
-      }}</ion-note>
+      <div class="item-container">
+        <ion-label>Cor:</ion-label>
+        <ion-note slot="end">{{ bicicleta?.cor }}</ion-note>
+      </div>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="item-container">
+        <ion-label>Numero série:</ion-label>
+        <ion-note slot="end" class="numero">{{
+          bicicleta?.numeroSerie
+        }}</ion-note>
+      </div>
     </ion-item>
   </ion-item-group>
 </div>

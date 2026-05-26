@@ -1,0 +1,27 @@
+section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.botao-container {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+
+  ion-button {
+    min-width: 70px;
+    width: 50%;
+    height: 70px;
+    --background: var(--background-botao-cinza);
+    --color: var(--texto-azul);
+    --background-activated: var(--background-botao-cinza);
+    --color-activated: var(--laranja-primario);
+  }
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}

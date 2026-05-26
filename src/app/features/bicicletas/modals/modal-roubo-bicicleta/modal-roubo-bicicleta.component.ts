@@ -130,8 +130,9 @@ export class ModalRouboBicicletaComponent {
           localidade: res.localidade,
           estado: res.estado,
         });
-
-        console.log(res);
+      },
+      error: async (err) => {
+        await loading.dismiss();
       },
     });
   }
@@ -182,6 +183,7 @@ export class ModalRouboBicicletaComponent {
         this.formRoubo.reset();
         await loading.dismiss();
         await this.modalCtrl.dismiss(this.bicicleta);
+        this.router.navigate(['/bicicletas']);
       },
       error: async (err: FlashMessageError) => {
         this.mensagemService.enviarMensagem(err.error);

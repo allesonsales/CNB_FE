@@ -5,11 +5,23 @@
   padding: 0;
 }
 
-ion-label {
+ion-item {
   color: var(--texto-azul);
   --color: var(--texto-azul);
+  color: #12306c;
+}
+
+ion-note {
+  color: var(--texto-azul);
 }
 
 .numero {
   max-width: 50%;
+}
+
+.item-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

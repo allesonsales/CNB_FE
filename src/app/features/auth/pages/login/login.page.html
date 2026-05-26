@@ -1,10 +1,10 @@
 <ion-content [fullscreen]="true">
   <app-background></app-background>
   <div class="container">
+    <img class="marca" src="assets/images/marca.png" alt="" />
     <section class="form-section">
       <form [formGroup]="login">
-        <img src="assets/images/marca.png" alt="" />
-        <ion-item class="input-container">
+        <ion-item class="input-container" lines="none">
           <ion-input
             class="input"
             type="email"
@@ -16,7 +16,7 @@
           ></ion-input>
         </ion-item>
 
-        <ion-item class="input-container">
+        <ion-item class="input-container" lines="none">
           <ion-input
             class="input"
             [type]="verSenha ? 'text' : 'password'"

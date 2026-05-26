@@ -12,6 +12,8 @@
 <ion-content [fullscreen]="true">
   <div class="container">
     <app-header-perfil [dadosPerfil]="perfil"></app-header-perfil>
+    @if (perfil?.amizade?.status == statusAmizade.ACEITA || perfil?.isMeuPerfil)
+    {
     <app-tab-social
       [segmentos]="segmentos"
       (acao)="onAcao($event)"
@@ -19,9 +21,15 @@
 
     @switch (abaAtiva) { @case ('fotos') {
     <app-fotos-perfil></app-fotos-perfil>
-    } @case ('grupos') {<app-grupos-perfil></app-grupos-perfil> } @case
-    ('conquistas') {
+    } @case ('grupos') {
+    <app-grupos-perfil></app-grupos-perfil>
+    } @case ('conquistas') {
     <app-conquistas-perfil></app-conquistas-perfil>
-    } }
+    } } } @else {
+    <div class="container-block">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <span>Adicione o usuário para ver o seu conteúdo.</span>
+    </div>
+    }
   </div>
 </ion-content>

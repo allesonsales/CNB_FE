@@ -70,7 +70,7 @@ export class LoginPage implements OnInit {
     };
 
     if (formLogin.email == '') {
-      ((formLogin.email = 'user56@gmail.com'), (formLogin.senha = 'ABCDEF'));
+      ((formLogin.email = 'alleson@gmail.com'), (formLogin.senha = 'ABCDEF'));
     }
 
     this.authService.login(formLogin).subscribe({
@@ -97,18 +97,15 @@ export class LoginPage implements OnInit {
 
   logarUsuarioOutro() {
     const formLogin: FormLogin = {
-      email: 'user45@gmail.com',
+      email: 'beatriz@gmail.com',
       senha: 'ABCDEF',
     };
 
     this.authService.login(formLogin).subscribe({
       next: (res: any) => {
         this.mensagemService.enviarMensagem(res);
-        console.log(res);
 
         if (res) {
-          this.authService.isLogged = true;
-
           this.notificacaoSub = this.notificacaoService
             .startPolling()
             .subscribe((res) => this.notificacaoService.notificacoes.set(res));

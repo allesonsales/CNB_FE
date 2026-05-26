@@ -4,7 +4,7 @@
       <small>Notificações</small>
     </ion-item-divider>
 
-    <ion-accordion-group>
+    <ion-accordion-group (ionChange)="onAccordionChange($event)">
       <ion-accordion value="amizade">
         <ion-item slot="header" lines="none">
           <small>{{`Amizades (${notificacoesAmizades().length})`}}</small>

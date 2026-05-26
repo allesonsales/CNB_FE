@@ -1,16 +1,19 @@
-<nav *ngIf="!isMobile">
+<nav>
+  @if (!isMobile) {
   <img src="assets/images/marca.png" alt="CNB" />
   <div class="botao-centro">
     <button>Sobre o CNB</button>
     <button>Download CNB</button>
   </div>
-</nav>
 
-<nav class="mobile" *ngIf="isMobile">
+  } @else {
+
   <img src="assets/images/marca.png" alt="CNB" />
   <ion-button>
     <ion-icon name="menu-outline"></ion-icon>
   </ion-button>
+
+  }
 </nav>
 
 <main>

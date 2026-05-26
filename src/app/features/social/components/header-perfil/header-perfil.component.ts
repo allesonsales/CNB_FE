@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular/standalone';
 import { AmizadeStatusRes } from 'src/app/models/amizade/amizade-status';
 import { FlashMessage, FlashMessageError } from 'src/app/models/Response';
@@ -10,6 +10,7 @@ import { UsuarioLogado } from 'src/app/models/usuario/usuario-logado';
 import { Perfil } from 'src/app/models/perfil/perfil';
 import { AuthService } from 'src/app/services/auth-service';
 import { environment } from 'src/environments/environment';
+import { AmizadesPerfilComponent } from '../amizades-perfil/amizades-perfil.component';
 
 @Component({
   selector: 'app-header-perfil',
@@ -19,18 +20,18 @@ import { environment } from 'src/environments/environment';
 })
 export class HeaderPerfilComponent implements OnChanges {
   @Input() dadosPerfil: Perfil | null = null;
-  usuario = this.dadosPerfil?.usuario;
   isMeuPerfil = this.dadosPerfil?.isMeuPerfil;
   carregando: boolean = false;
   amizadeStatus = AmizadeStatusRes;
   usuarioLogado: UsuarioLogado | null = null;
 
   get fotoUrl(): string {
-    return `${environment.apiUrl}${this.usuario?.foto || 'images/perfil.png'}`;
+    return `${environment.apiUrl}${this.dadosPerfil?.usuario?.foto || 'images/perfil.png'}`;
   }
 
   constructor(
     private popOverCtrl: PopoverController,
+    private modalCtrl: ModalController,
     private authService: AuthService,
     private amizadeService: AmizadeService,
     private mensagemService: MensagemService,
@@ -39,7 +40,6 @@ export class HeaderPerfilComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.usuarioLogado = this.authService.usuarioLogado();
     if (changes['dadosPerfil']) {
-      this.usuario = this.dadosPerfil?.usuario;
       this.isMeuPerfil = this.dadosPerfil?.isMeuPerfil;
     }
   }
@@ -66,7 +66,6 @@ export class HeaderPerfilComponent implements OnChanges {
       },
       error: (err: FlashMessageError) => {
         this.carregando = false;
-        console.log(err);
         this.mensagemService.enviarMensagem(err.error);
       },
     });
@@ -107,8 +106,6 @@ export class HeaderPerfilComponent implements OnChanges {
   cancelarPedidoAmizade() {
     if (!this.dadosPerfil?.usuario || !this.dadosPerfil.amizade?.id) return;
 
-    console.log('dados perfil', this.dadosPerfil);
-
     const dadosAtuais = this.dadosPerfil;
 
     this.carregando = true;
@@ -125,7 +122,7 @@ export class HeaderPerfilComponent implements OnChanges {
           this.dadosPerfil = {
             ...dadosAtuais,
             amizade: {
-              status: this.amizadeStatus.PENDENTE,
+              status: this.amizadeStatus.CANCELADA,
             },
           };
 
@@ -142,7 +139,7 @@ export class HeaderPerfilComponent implements OnChanges {
     const popOver = await this.popOverCtrl.create({
       component: AcoesPerfilComponent,
       componentProps: {
-        usuario: this.usuario,
+        usuario: this.dadosPerfil?.usuario,
         isMeuPerfil: this.isMeuPerfil,
         amizadeStatus: this.dadosPerfil?.amizade?.status,
       },
@@ -152,5 +149,16 @@ export class HeaderPerfilComponent implements OnChanges {
     });
 
     await popOver.present();
+  }
+
+  async verAmizades() {
+    const modal = await this.modalCtrl.create({
+      component: AmizadesPerfilComponent,
+      componentProps: { dadosPerfil: this.dadosPerfil },
+      breakpoints: [0, 0.5, 1],
+      initialBreakpoint: 0.5,
+    });
+
+    await modal.present();
   }
 }

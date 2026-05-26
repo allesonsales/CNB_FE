@@ -13,13 +13,17 @@ import { switchMap, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AmizadeAcao } from 'src/app/models/amizade/amizade-acao';
 import { AmizadeService } from 'src/app/services/amizade-service';
-import { AmizadeStatusRes } from 'src/app/models/amizade/amizade-status';
-import { Amizade } from 'src/app/models/amizade/amizade';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-notificacao',
   standalone: true,
-  imports: [IonicModule, CommonModule, BotoesAcaoNotificacaoComponent],
+  imports: [
+    IonicModule,
+    CommonModule,
+    BotoesAcaoNotificacaoComponent,
+    RouterLink,
+  ],
   templateUrl: './notificacao.component.html',
   styleUrls: ['./notificacao.component.scss'],
 })
@@ -51,8 +55,10 @@ export class NotificacaoComponent implements OnChanges {
         return 'heart';
       case NotificacaoTipo.MOVIMENTO:
         return 'chatbubble';
-      case NotificacaoTipo.ROUBO:
+      case NotificacaoTipo.AMIZADE:
         return 'person-add';
+      case NotificacaoTipo.ROUBO:
+        return 'megaphone';
       case NotificacaoTipo.TRANSACAO_CONCLUIDA:
         return 'cash';
       case NotificacaoTipo.AREA_PERIGOSA:
@@ -76,7 +82,6 @@ export class NotificacaoComponent implements OnChanges {
         .atualizarTransacao(transacaoId, acao as TransacaoAcao)
         .pipe(
           tap((res) => {
-            console.log('RES COMPLETO:', res);
             this.mensagemService.enviarMensagem(res);
           }),
 
@@ -94,7 +99,6 @@ export class NotificacaoComponent implements OnChanges {
         )
         .subscribe({
           error: (err: FlashMessageError) => {
-            console.log(err);
             this.mensagemService.enviarMensagem(err.error);
           },
         });

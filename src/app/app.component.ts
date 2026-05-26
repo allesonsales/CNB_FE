@@ -6,7 +6,6 @@ import {
   IonMenu,
   IonMenuToggle,
   IonRouterOutlet,
-  IonTitle,
   IonToolbar,
   IonIcon,
 } from '@ionic/angular/standalone';
@@ -15,6 +14,7 @@ import { AuthService } from './services/auth-service';
 import { MensagemService } from './services/mensagem-service';
 import { Router } from '@angular/router';
 import { FlashMessage } from './models/Response';
+import { UsuarioLogado } from './models/usuario/usuario-logado';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +26,6 @@ import { FlashMessage } from './models/Response';
     IonMenu,
     IonHeader,
     IonToolbar,
-    IonTitle,
     IonContent,
     IonMenuToggle,
     IonIcon,
@@ -34,27 +33,31 @@ import { FlashMessage } from './models/Response';
   styleUrl: 'app.component.scss',
 })
 export class AppComponent {
+  usuarioLogado: UsuarioLogado | null = null;
+
   constructor(
     private authService: AuthService,
     private mensagemService: MensagemService,
     private router: Router,
   ) {
-    const rotaPublica = this.router.url.includes('/bicicleta/publica');
-
-    if (!rotaPublica) {
-      authService.getUsuario().subscribe({
-        next: (res) => {
-          authService.usuarioLogado.set(res);
-        },
-        error: () => {
-          authService.usuarioLogado.set(null);
-        },
-      });
-    }
+    this.authService.restaurarSessao().subscribe();
   }
 
   irPara(rota: string) {
+    if (rota == 'consulta-publica') {
+      window.open('/consulta-publica', '_blank');
+      return;
+    }
+
     this.router.navigate([`/${rota}`]);
+  }
+
+  irParaConquista() {
+    this.router.navigate([`/user/${this.authService.usuarioLogado()?.id}`], {
+      queryParams: {
+        aba: 'conquistas',
+      },
+    });
   }
 
   logout() {

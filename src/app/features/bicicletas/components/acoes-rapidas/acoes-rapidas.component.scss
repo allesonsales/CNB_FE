@@ -4,9 +4,10 @@ ion-item {
 
 .acao-container {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 1rem 0.5rem;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 100%;
+  padding: 1rem 1rem;
 }
 
 .botao-container {
@@ -16,11 +17,12 @@ ion-item {
   justify-content: flex-start;
   gap: 0.5rem;
   border-radius: 100px;
+  width: 100%;
 }
 
 ion-button {
   min-width: 70px;
-  width: 33%;
+  width: 30%;
   height: 70px;
   --border-radius: 50%;
   --background: var(--background-botao-cinza);

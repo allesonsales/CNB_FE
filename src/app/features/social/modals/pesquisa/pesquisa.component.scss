@@ -67,3 +67,13 @@ ion-button {
   align-items: center;
   --color: var(--laranja-primario);
 }
+
+.vazio {
+  min-height: 20vh;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--texto-azul);
+  font-weight: 300;
+}

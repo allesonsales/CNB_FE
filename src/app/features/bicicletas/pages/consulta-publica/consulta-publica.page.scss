@@ -7,7 +7,7 @@ nav {
 }
 
 nav img {
-  width: 70px;
+  max-width: 70px;
   height: 40px;
 }
 
@@ -15,6 +15,7 @@ nav ion-button {
   color: var(--laranja-primario);
   --background: transparent;
   --background-activated: transparent;
+  --box-shadow: none;
 }
 
 nav .botao-centro {

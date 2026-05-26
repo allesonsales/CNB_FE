@@ -55,17 +55,14 @@ export class DetalheBicicletaPage implements OnInit {
     this.bicicletaService.buscarBicicletaNumeroSerie(numeroSerie).subscribe({
       next: (bicicleta: Bicicleta) => {
         this.bicicleta = bicicleta;
-        console.log(bicicleta);
       },
       error: (err: FlashMessageError) => {
         this.mensagemService.enviarMensagem(err.error);
-        console.log(err);
       },
     });
   }
 
   async abrirPopOver(ev: any) {
-    console.log('clicou');
     const popOver = await this.popOverCtrl.create({
       component: AcoesBicicletaComponent,
       componentProps: { bicicleta: this.bicicleta },

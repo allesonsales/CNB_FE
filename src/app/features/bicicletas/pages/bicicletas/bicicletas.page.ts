@@ -45,9 +45,7 @@ export class BicicletasPage {
         this.bicicletaService.bicicletas.set(bicicletas);
         bicicletas;
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
   }
 

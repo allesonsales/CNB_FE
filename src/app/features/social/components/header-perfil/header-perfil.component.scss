@@ -39,7 +39,7 @@ h3 {
 .icone {
   display: flex;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 ion-icon.ellipsis {
@@ -58,6 +58,7 @@ ion-icon.ellipsis {
 .atividades-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 

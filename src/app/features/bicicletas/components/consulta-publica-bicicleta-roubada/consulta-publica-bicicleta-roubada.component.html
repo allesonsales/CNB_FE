@@ -29,16 +29,22 @@
       <div class="data">
         <div class="item">
           <ion-icon name="calendar-outline"></ion-icon>
-          <span><b>Bicicleta roubada em:</b>{{ bicicleta?.dataRoubo }}</span>
+          <span
+            ><b>Bicicleta roubada em: </b
+            >{{ bicicleta?.dataRoubo | date: "dd/MM/yyyy" }}</span
+          >
         </div>
         <div class="item">
           <ion-icon name="calendar-outline"></ion-icon>
-          <span><b>Bicicleta autenticada em:</b>13/05/2025</span>
+          <span
+            ><b>Bicicleta autenticada em: </b>
+            {{ bicicleta?.dataAutenticacao | date: "dd/MM/yyyy" }}</span
+          >
         </div>
         <div class="item">
           <ion-icon name="calendar-number-outline"></ion-icon>
           <span
-            ><b>Data da consulta:</b>{{ dataAtual | date: "dd/MM/yyyy" }}</span
+            ><b>Data da consulta: </b>{{ dataAtual | date: "dd/MM/yyyy" }}</span
           >
         </div>
       </div>

@@ -6,7 +6,7 @@ import { TabSocialComponent } from 'src/app/shared/components/tab-social/tab-soc
 import { HeaderPerfilComponent } from '../../components/header-perfil/header-perfil.component';
 import { UsuarioService } from 'src/app/services/usuario-service';
 import { Usuario } from 'src/app/models/Usuario';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { FotosPerfilComponent } from '../../components/fotos-perfil/fotos-perfil.component';
 import { GruposPerfilComponent } from '../../components/grupos-perfil/grupos-perfil.component';
 import { ConquistasPerfilComponent } from '../../components/conquistas-perfil/conquistas-perfil.component';
@@ -19,6 +19,9 @@ import { AuthService } from 'src/app/services/auth-service';
 import { UsuarioLogado } from 'src/app/models/usuario/usuario-logado';
 import { PerfilService } from 'src/app/services/perfil-service';
 import { Perfil } from 'src/app/models/perfil/perfil';
+import { AmizadeStatusRes } from 'src/app/models/amizade/amizade-status';
+import { ModalEditarPerfilComponent } from '../../modals/modal-editar-perfil/modal-editar-perfil.component';
+import { AmizadesPerfilComponent } from '../../components/amizades-perfil/amizades-perfil.component';
 
 @Component({
   selector: 'app-perfil',
@@ -39,6 +42,7 @@ export class PerfilPage {
   usuario: UsuarioResumido | null = null;
   abaAtiva: string = 'fotos';
   perfil: Perfil | null = null;
+  statusAmizade = AmizadeStatusRes;
 
   segmentos = [
     {
@@ -60,13 +64,21 @@ export class PerfilPage {
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private navCtrl: NavController,
     private perfilService: PerfilService,
     private mensagemService: MensagemService,
+    private navCtrl: NavController,
+    private modalCtrl: ModalController,
   ) {}
 
   ionViewWillEnter() {
     const id = Number(this.activeRoute.snapshot.paramMap.get('id'));
+    const aba = this.activeRoute.snapshot.queryParamMap.get('aba');
+
+    if (!aba) {
+      this.abaAtiva = 'fotos';
+    } else {
+      this.abaAtiva = aba;
+    }
 
     this.perfilService.preencherPerfil(id).subscribe({
       next: (res: Perfil) => {
@@ -74,6 +86,15 @@ export class PerfilPage {
         this.perfil = res;
       },
     });
+  }
+
+  async editarPerfil() {
+    const modal = await this.modalCtrl.create({
+      component: ModalEditarPerfilComponent,
+      componentProps: { usuario: this.usuario },
+    });
+
+    await modal.present();
   }
 
   voltar() {

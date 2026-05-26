@@ -1,3 +1,14 @@
-<p>
-  conquistas-perfil works!
-</p>
+<ion-segment-view>
+  <div class="conquistas-container">
+    <ul>
+      @for (conquista of conquistas; track conquista.id) {
+        <li>
+          <div class="img-container">
+            <img [src]="conquista.imagem" alt="" />
+          </div>
+          <span>{{ conquista.titulo }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</ion-segment-view>

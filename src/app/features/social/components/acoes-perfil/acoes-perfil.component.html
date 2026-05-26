@@ -6,7 +6,9 @@
       }
       <ion-item [detailIcon]="false">Denúnciar</ion-item>
     } @else {
-      <ion-item [detailIcon]="false">Editar perfil</ion-item>
+      <ion-item [detailIcon]="false" (click)="editarPerfil()"
+        >Editar perfil</ion-item
+      >
     }
   </ion-list>
 </ion-content>

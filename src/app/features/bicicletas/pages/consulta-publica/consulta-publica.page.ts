@@ -38,7 +38,6 @@ export class ConsultaPublicaPage implements OnInit {
   }
 
   consultar() {
-    console.log('Numero serie', this.numeroSerie);
     if (!this.numeroSerie) {
       this.mensagemService.enviarMensagem({
         mensagem: 'Informe o número de série da bicicleta.',

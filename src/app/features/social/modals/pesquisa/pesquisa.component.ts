@@ -13,6 +13,7 @@ import { UsuarioLista } from 'src/app/models/usuario/usuario-lista';
 import { UsuarioLogado } from 'src/app/models/usuario/usuario-logado';
 import { AuthService } from 'src/app/services/auth-service';
 import { PesquisaService } from 'src/app/services/pesquisa-service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pesquisa',
@@ -47,11 +48,13 @@ export class PesquisaComponent {
       )
       .subscribe({
         next: async (res: UsuarioLista[]) => {
+          res.map((usuario) => {
+            usuario.foto = `${environment.apiUrl}${usuario.foto}`;
+          });
           this.listaPesquisa = res;
           this.carregando = false;
         },
         error: (err) => {
-          console.log(err);
           this.carregando = false;
         },
       });

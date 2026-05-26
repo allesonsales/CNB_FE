@@ -8,7 +8,6 @@ import {
 } from '@angular/forms';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular/standalone';
-import { NgxMaskDirective } from 'ngx-mask';
 import { Bicicleta } from 'src/app/models/bicicleta/Bicicleta';
 import { FlashMessage, FlashMessageError } from 'src/app/models/Response';
 import { Transacao } from 'src/app/models/transacao/transacao';
@@ -18,11 +17,12 @@ import { BicicletaService } from 'src/app/services/bicicleta-service';
 import { MensagemService } from 'src/app/services/mensagem-service';
 import { TransacaoService } from 'src/app/services/transacao-service';
 import { UsuarioService } from 'src/app/services/usuario-service';
+import { CpfMaskDirective } from 'src/app/directives/cpf-mask-directive';
 
 @Component({
   selector: 'app-modal-iniciar-transferencia',
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule, NgxMaskDirective],
+  imports: [IonicModule, ReactiveFormsModule, CommonModule, CpfMaskDirective],
   templateUrl: './modal-iniciar-transferencia.component.html',
   styleUrls: ['./modal-iniciar-transferencia.component.scss'],
 })
@@ -105,7 +105,6 @@ export class ModalIniciarTransferenciaComponent {
       next: async (usuario: UsuarioResumido) => {
         this.comprador = usuario;
         await loading.dismiss();
-        console.log(usuario);
         this.formTransacao.controls['nome'].setValue(usuario.nome);
       },
       error: async (err: FlashMessageError) => {
@@ -159,7 +158,6 @@ export class ModalIniciarTransferenciaComponent {
   }
 
   cancelar() {
-    console.log('cancelou');
     this.formTransacao.reset();
     this.modalCtrl.dismiss();
     this.comprador = null;

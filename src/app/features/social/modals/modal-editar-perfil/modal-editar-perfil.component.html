@@ -1,0 +1,244 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Perfil</ion-title></ion-toolbar
+  >
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    @if (carregando) {
+      <div class="carregando">
+        <ion-spinner></ion-spinner>
+      </div>
+    } @else {
+      <form [formGroup]="formUsuario">
+        <ion-avatar>
+          <img [src]="fotoUrl" alt="" />
+        </ion-avatar>
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              class="input"
+              type="text"
+              label="Nome"
+              formControlName="nome"
+              labelPlacement="stacked"
+              fill="none"
+            ></ion-input>
+          </ion-item>
+          @if (nomeInput?.touched && nomeInput?.invalid) {
+            <ion-text class="erro-modal">
+              @if (nomeInput?.touched && nomeInput?.errors?.["required"]) {
+                <small>O nome é obrigatório.</small>
+              } @else if (nomeInput?.errors?.["nomeInvalido"]) {
+                <small> Digite o seu nome completo. </small>
+              }
+            </ion-text>
+          }
+        </div>
+
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              class="input"
+              type="date"
+              label="Data de nascimento"
+              formControlName="dataNascimento"
+              labelPlacement="stacked"
+              fill="none"
+            ></ion-input>
+          </ion-item>
+          @if (dataNascimentoInput?.touched && dataNascimentoInput?.invalid) {
+            <ion-text class="erro-modal">
+              @if (dataNascimentoInput?.errors?.["required"]) {
+                <small> A data de nascimento é obrigatória. </small>
+              } @else if (dataNascimentoInput?.errors?.["menorDeIdade"]) {
+                <small> Você precisa ter no minímo 18 anos. </small>
+              } @else if (dataNascimentoInput?.errors?.["idadeInvalida"]) {
+                <small> Verifique a data de nascimento. </small>
+              }
+            </ion-text>
+          }
+        </div>
+
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              class="input"
+              type="text"
+              label="CPF"
+              readOnly
+              formControlName="cpf"
+              labelPlacement="stacked"
+              appCpfMask
+              fill="none"
+            ></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              class="input"
+              type="email"
+              label="E-mail"
+              formControlName="email"
+              labelPlacement="stacked"
+              appTelMaskDirective
+              fill="none"
+            ></ion-input>
+          </ion-item>
+          @if (emailInput?.touched && emailInput?.errors) {
+            <ion-text class="erro-modal">
+              @if (emailInput?.errors?.["required"]) {
+                <small>O e-mail é obrigatório.</small>
+              } @else if (emailInput?.errors?.["email"]) {
+                <small>Digite um e-mail válido.</small>
+              }
+            </ion-text>
+          }
+        </div>
+
+        <div class="item-container">
+          <ion-item class="input-container" lines="none">
+            <ion-input
+              class="input"
+              type="text"
+              label="Telefone"
+              formControlName="telefone"
+              labelPlacement="stacked"
+              appTelMaskDirective
+              fill="none"
+            ></ion-input>
+          </ion-item>
+          @if (telefoneInput?.touched && telefoneInput?.invalid) {
+            <ion-text class="erro-modal">
+              @if (telefoneInput?.errors?.["required"]) {
+                <small> O telefone é obrigatório. </small>
+              } @else if (telefoneInput?.errors?.["minlength"]) {
+                <small> Verifique o telefone. </small>
+              }
+            </ion-text>
+          }
+        </div>
+
+        <div class="senha-container">
+          <ion-label (click)="alterarSenha = true">Alterar senha</ion-label>
+          <ion-label>Excluir conta</ion-label>
+        </div>
+
+        <div class="botao-container-modal">
+          <ion-button class="cancelar" (click)="cancelar()">
+            <ion-label>Cancelar</ion-label>
+          </ion-button>
+          <ion-button (click)="confirmarEdicao()">Confirmar</ion-button>
+        </div>
+      </form>
+    }
+  </div>
+</ion-content>
+
+@if (alterarSenha) {
+  <ion-modal [isOpen]="alterarSenha" class="alterar-senha">
+    <ng-template>
+      <ion-icon
+        class="fechar"
+        name="close"
+        (click)="cancelarAlterarSenha()"
+      ></ion-icon>
+      <ion-content>
+        <form [formGroup]="formSenha">
+          <div class="form-container">
+            <span>Alterar senha</span>
+            <div class="item-container">
+              <ion-item class="input-container" lines="none">
+                <ion-input
+                  class="input"
+                  [type]="senha == 'antiga' ? 'text' : 'password'"
+                  label="Senha atual"
+                  formControlName="senhaAtual"
+                  labelPlacement="stacked"
+                  placeholder="Digite sua senha atual..."
+                  fill="none"
+                ></ion-input>
+                <ion-icon
+                  [name]="senha == 'antiga' ? 'eye-off-outline' : 'eye-outline'"
+                  slot="end"
+                  (click)="verSenha('antiga')"
+                ></ion-icon>
+              </ion-item>
+            </div>
+            <div class="item-container">
+              <ion-item class="input-container" lines="none">
+                <ion-input
+                  class="input"
+                  [type]="senha == 'nova' ? 'text' : 'password'"
+                  label="Nova senha"
+                  formControlName="senhaNova"
+                  labelPlacement="stacked"
+                  placeholder="Digite uma nova senha..."
+                  fill="none"
+                ></ion-input>
+                <ion-icon
+                  [name]="senha == 'nova' ? 'eye-off-outline' : 'eye-outline'"
+                  slot="end"
+                  (click)="verSenha('nova')"
+                ></ion-icon>
+              </ion-item>
+              @if (senhaNova?.touched && senhaNova?.invalid) {
+                <ion-text class="erro-modal">
+                  @if (senhaNova?.errors?.["minLength"]) {
+                    <small>A senha deve ter no minímo 6 caracteres.</small>
+                  }
+                </ion-text>
+              }
+            </div>
+            <div class="item-container">
+              <ion-item class="input-container" lines="none">
+                <ion-input
+                  class="input"
+                  [type]="senha == 'confirmar' ? 'text' : 'password'"
+                  label="Confirmar nova senha"
+                  formControlName="confirmarSenhaNova"
+                  placeholder="Confirme a nova senha..."
+                  labelPlacement="stacked"
+                  fill="none"
+                ></ion-input>
+                <ion-icon
+                  [name]="
+                    senha == 'confirmar' ? 'eye-off-outline' : 'eye-outline'
+                  "
+                  slot="end"
+                  (click)="verSenha('confirmar')"
+                ></ion-icon>
+              </ion-item>
+              @if (confirmarSenhaNova?.touched && confirmarSenhaNova?.invalid) {
+                <ion-text class="erro-modal">
+                  @if (
+                    confirmarSenhaNova?.touched &&
+                    confirmarSenhaNova?.errors?.["minlength"]
+                  ) {
+                    <small>A senha deve ter no minímo 6 caracteres.</small>
+                  }
+                </ion-text>
+              }
+            </div>
+            <div class="botao-container-modal">
+              <ion-button class="cancelar" (click)="cancelarAlterarSenha()">
+                <ion-label>Cancelar</ion-label>
+              </ion-button>
+              <ion-button (click)="confirmarAlterarSenha()"
+                >Confirmar</ion-button
+              >
+            </div>
+          </div>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+}

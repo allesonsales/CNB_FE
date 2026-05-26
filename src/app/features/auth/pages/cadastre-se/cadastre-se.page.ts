@@ -15,6 +15,9 @@ import { AuthService } from 'src/app/services/auth-service';
 import { MensagemService } from 'src/app/services/mensagem-service';
 import { IonicModule } from '@ionic/angular';
 import { BackgroundComponent } from 'src/app/shared/components/background/background.component';
+import { CpfMaskDirective } from 'src/app/directives/cpf-mask-directive';
+import { TelMaskDirective } from 'src/app/directives/tel-mask-directive';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastre-se',
@@ -27,6 +30,8 @@ import { BackgroundComponent } from 'src/app/shared/components/background/backgr
     FormsModule,
     ReactiveFormsModule,
     BackgroundComponent,
+    CpfMaskDirective,
+    TelMaskDirective,
   ],
 })
 export class CadastreSePage {
@@ -67,6 +72,7 @@ export class CadastreSePage {
     private navCtrl: NavController,
     private authService: AuthService,
     private mensagemService: MensagemService,
+    private router: Router,
   ) {
     this.formCadastro = fB.group(
       {
@@ -141,11 +147,7 @@ export class CadastreSePage {
   }
 
   cadastrar() {
-    console.log('chamou');
-
     if (this.formCadastro.invalid) {
-      console.log('erro');
-      console.log(this.formCadastro.get('telefone')?.value);
       this.formCadastro.markAllAsTouched();
 
       this.mensagemService.enviarMensagem({
@@ -155,17 +157,22 @@ export class CadastreSePage {
 
       return;
     }
+    const cpf = this.formCadastro.get('cpf')?.value;
+    const cpfLimpo = cpf.replace(/\D/g, '');
 
-    const novoUsuario: UsuarioCadastrar = this.formCadastro.value;
+    const novoUsuario: UsuarioCadastrar = {
+      ...this.formCadastro.value,
+      cpf: cpfLimpo,
+    };
 
     this.authService.cadastrar(novoUsuario).subscribe({
       next: (res: FlashMessage) => {
         this.mensagemService.enviarMensagem(res);
-        console.log(res);
+        this.formCadastro.reset();
+        this.router.navigate(['/login']);
       },
       error: (err: FlashMessageError) => {
         this.mensagemService.enviarMensagem(err.error);
-        console.log(err);
       },
     });
   }

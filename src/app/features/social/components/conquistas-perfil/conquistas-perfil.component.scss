@@ -1,0 +1,45 @@
+.conquistas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat((3, 1fr));
+  gap: 1rem;
+  justify-content: center;
+  max-width: 100%;
+  padding: 0;
+  list-style: none;
+  margin-left: 1rem;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+}
+
+span {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--laranja-primario);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.img-container {
+  background-color: var(--laranja-primario);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 120px;
+}

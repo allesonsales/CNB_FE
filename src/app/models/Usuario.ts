@@ -5,6 +5,7 @@ export interface Usuario {
   foto: string;
   dataNascimento?: string;
   email?: string;
+  telefone?: string;
 }
 
 export interface UsuarioCadastrar {

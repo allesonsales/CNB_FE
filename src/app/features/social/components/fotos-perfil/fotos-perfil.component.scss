@@ -1,0 +1,13 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+}
+
+li:first-child img {
+  border-radius: 15px 0 0 0;
+}
+
+li:nth-of-type(3) img {
+  border-radius: 0 15px 0 0;
+}

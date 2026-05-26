@@ -15,6 +15,7 @@ import { RouboService } from 'src/app/services/roubo-service';
 import { FlashMessage, FlashMessageError } from 'src/app/models/Response';
 import { BicicletaService } from 'src/app/services/bicicleta-service';
 import { Router } from '@angular/router';
+import { LocalizacaoBicicletaComponent } from '../localizacao-bicicleta/localizacao-bicicleta.component';
 
 @Component({
   selector: 'app-acoes-rapidas',
@@ -58,7 +59,7 @@ export class AcoesRapidasComponent {
   async abrirAlertaRecuperada() {
     const alertRecuperada = await this.alertCtrl.create({
       animated: true,
-      message: 'Deseja mesmo informar que a bicicletea foi recuperada?',
+      message: 'Deseja mesmo marcar a bicicleta como recuperada?',
       cssClass: 'custom-loading',
       buttons: [
         {
@@ -77,6 +78,15 @@ export class AcoesRapidasComponent {
     await alertRecuperada.present();
   }
 
+  async abrirModalLocalizacao() {
+    const modal = await this.modalCtrl.create({
+      component: LocalizacaoBicicletaComponent,
+      componentProps: { bicicleta: this.bicicleta },
+    });
+
+    await modal.present();
+  }
+
   async marcarComoRecuperada() {
     const loading = await this.loadingCtrl.create({
       animated: true,
@@ -91,7 +101,7 @@ export class AcoesRapidasComponent {
       next: async (res: FlashMessage) => {
         await loading.dismiss();
         await this.router.navigate(['/bicicletas']);
-        console.log(res);
+
         this.mensagemService.enviarMensagem(res);
 
         this.bicicletaService.bicicletas.update((lista) =>
@@ -103,7 +113,6 @@ export class AcoesRapidasComponent {
         );
       },
       error: async (err: FlashMessageError) => {
-        console.log(err);
         await loading.dismiss();
         this.mensagemService.enviarMensagem(err.error);
       },
