@@ -1,0 +1,19 @@
+ion-content {
+  min-height: 20vh;
+  max-height: 50vh;
+  background-color: transparent;
+  --background: transparent;
+}
+
+.container {
+  height: 100%;
+}
+
+.vazio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--texto-azul);
+  font-weight: 300;
+  height: 100%;
+}

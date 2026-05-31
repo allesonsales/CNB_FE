@@ -1,0 +1,47 @@
+<ion-content>
+  <div class="container">
+    <form [formGroup]="formGrupo">
+      <div class="item-container-avatar" (click)="selecionarFoto()">
+        <ion-avatar>
+          <img [src]="fotoSelecionada ? fotoSelecionada : imagemPadrao" />
+        </ion-avatar>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            formControlName="nome"
+            class="input"
+            type="text"
+            label="Nome do grupo"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Dê um nome para o grupo..."
+          >
+          </ion-input>
+        </ion-item>
+      </div>
+      <div class="item-container">
+        <ion-item class="input-container" lines="none">
+          <ion-input
+            formControlName="descricao"
+            class="input"
+            type="text"
+            label="Descrição"
+            labelPlacement="stacked"
+            fill="none"
+            placeholder="Fale um pouco mais sobre o grupo..."
+          >
+          </ion-input>
+        </ion-item>
+      </div>
+      <div class="button-container">
+        <ion-button class="botao-cancelar" (click)="cancelar()"
+          >Cancelar</ion-button
+        >
+        <ion-button class="botao-azul" (click)="cadastrar()"
+          >Criar grupo</ion-button
+        >
+      </div>
+    </form>
+  </div>
+</ion-content>

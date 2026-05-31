@@ -15,6 +15,8 @@ import { MensagemService } from './services/mensagem-service';
 import { Router } from '@angular/router';
 import { FlashMessage } from './models/Response';
 import { UsuarioLogado } from './models/usuario/usuario-logado';
+import { ModalController } from '@ionic/angular';
+import { CriarGrupoComponent } from './features/social/components/criar-grupo/criar-grupo.component';
 
 @Component({
   selector: 'app-root',
@@ -39,6 +41,7 @@ export class AppComponent {
     private authService: AuthService,
     private mensagemService: MensagemService,
     private router: Router,
+    private modalCtrl: ModalController,
   ) {
     this.authService.restaurarSessao().subscribe();
   }
@@ -50,6 +53,16 @@ export class AppComponent {
     }
 
     this.router.navigate([`/${rota}`]);
+  }
+
+  async abrirCriarGrupos() {
+    const modal = await this.modalCtrl.create({
+      component: CriarGrupoComponent,
+      initialBreakpoint: 0.5,
+      breakpoints: [0, 0.5, 1],
+    });
+
+    await modal.present();
   }
 
   irParaConquista() {

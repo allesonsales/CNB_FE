@@ -181,6 +181,7 @@ export class AcoesBicicletaComponent {
         this.bicicletaService.bicicletas.update((lista) =>
           lista.filter((b) => b.id != this.bicicleta.id),
         );
+        this.router.navigate(['/bicicletas']);
       },
       error: async (err: FlashMessageError) => {
         await loading.dismiss();
